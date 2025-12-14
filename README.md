@@ -1,2 +1,3 @@
 # dotfiles-bine
-My dotfiles 📂 for main laptop bine (OS: nixos) ❄️
+
+Config still in the works, will update soon :)
