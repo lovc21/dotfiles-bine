@@ -49,7 +49,7 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/bine
-	  nixos-hardware.nixosModules.framework-amd-ai-300-series
+	  inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series
            # inputs.disko.nixosModules.disko
         ];
       };

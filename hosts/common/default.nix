@@ -33,20 +33,34 @@
   nix = {
     settings = {
       experimental-features = "nix-command flakes";
+      # Auto-optimize when building
+      auto-optimise-store = true;
       trusted-users = [
         "root"
         "bine"
       ]; # Set users that are allowed to use the flake command
     };
+    # Configure automatic garbage collection for NixOS state;
+    # this controls the number of generations that are kept
+    # inside of the Nix store and thus the number of system
+    # configurations that are available for selection at boot
     gc = {
       automatic = true;
+      dates = "weekly";
       options = "--delete-older-than 30d";
+      randomizedDelaySec = "1 hour";
     };
-    optimise.automatic = true;
+    # Optimize Nix store (saves disk space)
+    optimise = {
+     automatic = true;
+     dates = [ "weekly" ];
+    };
     registry =
       (lib.mapAttrs (_: flake: {inherit flake;}))
       ((lib.filterAttrs (_: lib.isType "flake")) inputs);
     nixPath = ["/etc/nix/path"];
   };
+  # Limit boot menu entries
+  boot.loader.systemd-boot.configurationLimit = 10;
 }
 
