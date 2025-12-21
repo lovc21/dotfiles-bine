@@ -1,1 +1,3 @@
-{ config, ... }: { imports = [ ./home.nix ../common ]; }
+{ config, ... }: { 
+  imports = [ ./bine.nix ];
+}
