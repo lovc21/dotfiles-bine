@@ -1,3 +1,0 @@
-{ config, ... }: { 
-  imports = [ ./bine.nix ];
-}

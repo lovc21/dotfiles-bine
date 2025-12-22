@@ -5,12 +5,23 @@
   outputs,
   ...
 }: {
+
+  imports = [
+    ./users
+    inputs.home-manager.nixosModules.home-manager
+  ];
+
+  home-manager = {
+    useUserPackages = true;
+    extraSpecialArgs = {inherit inputs outputs;};
+  };
+
   nixpkgs = {
     # You can add overlays here
     overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
-      outputs.overlays.modifications
+      outputs.overlays.modificationsls
       outputs.overlays.stable-packages
 
       # You can also add overlays exported from other flakes:

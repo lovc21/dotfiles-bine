@@ -15,7 +15,7 @@ test:
 # Check flake for errors
 [group('nixos-test')]
 check:
-    nix flake check
+    nix flake check --show-trace
 
 # Build and switch to new configuration
 [group('nixos-test')]
@@ -37,5 +37,4 @@ clean:
 [group('nix')]
 history:
     nix profile history --profile /nix/var/nix/profiles/system
-
 
