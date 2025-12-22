@@ -166,5 +166,5 @@
   };
 
   home-manager.users.bine =
-    import ../../home/bine/${config.networking.hostName}.nix;
+    import ../../../home/bine/${config.networking.hostName}.nix;
 }
