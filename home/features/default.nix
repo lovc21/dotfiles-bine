@@ -3,5 +3,6 @@
     ./cli
     ./git
     ./terminal
+    ./editor
   ];
 }
