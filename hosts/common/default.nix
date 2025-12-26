@@ -78,5 +78,9 @@
 
   # setpu zsh 
   users.defaultUserShell = pkgs.zsh;
+
+  # Enable YubiKey support
+  services.pcscd.enable = true;
+  services.udev.packages = [ pkgs.yubikey-personalization ];
 }
 

@@ -123,18 +123,6 @@ in
       ];
     };
 
-    # Install required CLI packages from dotfiles
-    home.packages = with pkgs; [
-      eza           # Modern ls replacement
-      bat           # Better cat
-      fzf           # Fuzzy finder
-      zoxide        # Better cd command
-      ripgrep       # Better grep
-      fd            # Better find
 
-      zsh-autosuggestions
-      zsh-syntax-highlighting
-      oh-my-zsh
-    ];
   };
 }

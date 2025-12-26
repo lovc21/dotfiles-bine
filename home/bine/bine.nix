@@ -26,8 +26,11 @@
   # Enable git config
   features.git.enable = true;
 
-  # Enable terminal
+  # Enable terminal ghossty
   features.terminal.ghostty.enable = true;
+
+  # Enable nvim
+  features.editor.neovim.enable = true;
 
   home.packages = with pkgs; [
     # === TERMINALS ===
@@ -46,10 +49,6 @@
     sd
     ripgrep-all
 
-    # === VERSION CONTROL ===
-    gh
-    delta
-    
     # === DEVOPS & INFRASTRUCTURE ===
     terraform
     terraform-ls
@@ -105,14 +104,6 @@
     nodePackages.prettier
     nodePackages.typescript-language-server
     
-    # === EDITOR & LSPs ===
-    neovim
-    lua-language-server
-    nil
-    yaml-language-server
-    vscode-langservers-extracted
-    marksman
-    
     # === MONITORING & DEBUGGING ===
     htop
     iotop
@@ -129,7 +120,6 @@
     just
     
     # === BROWSERS ===
-    firefox
     chromium
     google-chrome
     brave
@@ -156,9 +146,6 @@
     hyperfine
     glow
     slides
-    yubikey-manager
-    yubikey-personalization
-    gnupg
     ollama
   ];
 }
