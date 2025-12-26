@@ -1,5 +1,6 @@
 # Common configuration for all hosts
-{
+{ 
+  pkgs,
   lib,
   inputs,
   outputs,
@@ -14,6 +15,7 @@
   home-manager = {
     useUserPackages = true;
     extraSpecialArgs = {inherit inputs outputs;};
+    backupFileExtension = "backup";
   };
 
   nixpkgs = {
@@ -73,5 +75,8 @@
   };
   # Limit boot menu entries
   boot.loader.systemd-boot.configurationLimit = 10;
+
+  # setpu zsh 
+  users.defaultUserShell = pkgs.zsh;
 }
 
