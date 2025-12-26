@@ -2,65 +2,53 @@
 
 let
   cfg = config.features.git;
-in {
+in
+{
   options.features.git.enable = lib.mkEnableOption "git configuration";
 
   config = lib.mkIf cfg.enable {
-    programs.git = {
-      enable = true;
+    # Install git and related tools
+    home.packages = with pkgs; [
+      git
+      git-lfs
+      delta
+      gh
       
-      # Updated syntax for user settings
-      settings = {
-        user = {
-          name = "Jakob";
-          email = "jakob.dekleva@gmail.com";
-        };
-        
-        commit = {
-          gpgsign = true;
-        };
-        
-        gpg = {
-          program = "${pkgs.gnupg}/bin/gpg";
-        };
-        
-        # Include work config conditionally
-        includeIf."gitdir:~/devrev/" = {
-          path = "~/.gitconfig-work";
-        };
-        
-        # Include personal config conditionally
-        includeIf."gitdir:~/jakob/" = {
-          path = "~/.gitconfig-personal";
-        };
-        
-        includeIf."gitdir:~/jakob-stuff/" = {
-          path = "~/.gitconfig-personal";
-        };
-      };
-    };
-
-    # Delta moved to separate program
-    programs.delta = {
-      enable = true;
-      enableGitIntegration = true;
-      options = {
-        navigate = true;
-        light = false;
-        side-by-side = true;
-      };
-    };
-
-    # GPG configuration
-    programs.gpg = {
-      enable = true;
+      # YubiKey support
+      yubikey-manager
+      yubikey-personalization
+    ];
+    
+    # Symlink git configs
+    home.file.".gitconfig" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/jakob-stuff/dotfiles-bine/git-config/gitconfig";
     };
     
-    # Updated syntax for pinentry
+    home.file.".gitconfig-personal" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/jakob-stuff/dotfiles-bine/git-config/gitconfig-personal";
+    };
+    
+    home.file.".gitconfig-work" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/jakob-stuff/dotfiles-bine/git-config/gitconfig-work";
+    };
+    
+    # GPG configuration for YubiKey
+    programs.gpg = {
+      enable = true;
+      settings = {
+        # YubiKey specific settings
+        use-agent = true;
+      };
+    };
+    
     services.gpg-agent = {
       enable = true;
       enableSshSupport = true;
       pinentry.package = pkgs.pinentry-curses;
+      extraConfig = ''
+        # YubiKey support
+        enable-ssh-support
+      '';
     };
   };
 }

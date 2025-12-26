@@ -1,0 +1,21 @@
+[user]
+    name  = Jakob
+    email = jakob.dekleva@gmail.com
+
+[commit]
+    gpgsign = true
+
+# If the repo is anywhere under ~/devrev/, include the WORK config
+[includeIf "gitdir:~/flare/"]
+    path = ~/.gitconfig-work
+
+# If the repo is anywhere under ~/jakob/, include the PERSONAL config
+[includeIf "gitdir:~/jakob/"]
+    path = ~/.gitconfig-personal
+
+# If the repo is anywhere under ~/jakob-stuff/, include the PERSONAL config
+[includeIf "gitdir:~/jakob-stuff/"]
+    path = ~/.gitconfig-personal
+
+# GPG program will be found automatically in PATH
+# No need to hardcode /usr/bin/gpg in NixOS
