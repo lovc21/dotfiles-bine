@@ -1,7 +1,6 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
@@ -157,10 +156,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  environment.sessionVariables = {
-    QT_QPA_PLATFORMTHEME="gtk3";
-  };
-
   # YubiKey udev rules
   services.udev.packages = [ pkgs.yubikey-personalization ];
   
@@ -183,69 +178,64 @@
   # have C, C++, or Rust extensions
   programs.nix-ld.enable = true;
 
-   # Install firefox.
-  programs.firefox.enable = true;
 
   # Allow unfree packages
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     # Tools
-     vim
-     wget
-     curl
-     tmux
-     tree
-     just
+    vim               
+    pciutils          # system hardware diagnostics
+    usbutils          # system hardware diagnostics
+    lm_sensors        # system temperature monitoring
+    killall           # basic system tool
+    file              # basic system tool
+    wirelesstools     # system networking
+    iw                # system networking
+    nix-tree          # NixOS tooling
+    nix-index         # NixOS tooling
+    nixos-option      # NixOS tooling
+    powertop          # system power management
+    acpi              # system power info
 
-     # System tools
-     pciutils
-     usbutils
-     lm_sensors
-     killall
-     file
-  
-     # Network tools
-     networkmanagerapplet
-     wirelesstools
-     iw
-  
-    # Build tools
-    gcc
-    gnumake
-    pkg-config
-  
-    # NixOS-specific
-    nix-tree
-    nix-index
-    nixos-option
-  
-    # Power management
-    powertop
-    acpi
-  
-    # Git
-    git
-    git-lfs
-    git-extras
-    
-    # GTK Theme
+    # Themes - needed for GDM login screen
     tokyonight-gtk-theme
-    
-    # Icon theme that matches Tokyo Night
     papirus-icon-theme
     tela-circle-icon-theme
-    
-    # Cursor theme
     bibata-cursors
-    
-    # Theme tools
-    gnome-tweaks
-    dconf-editor
 
-
+    gnome-tweaks      # GNOME system settings
+    dconf-editor      # GNOME system settings
   ];
+
+  # Enable Hyprland
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
+  # XDG Portal
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+    ];
+  };
+
+  # Wayland environment variables
+  environment.sessionVariables = {
+    QT_QPA_PLATFORMTHEME = "gtk3";
+    NIXOS_OZONE_WL = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
+    XDG_SESSION_TYPE = "wayland";
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_DESKTOP = "Hyprland";
+    GDK_BACKEND = "wayland,x11";
+    QT_QPA_PLATFORM = "wayland;xcb";
+    MOZ_ENABLE_WAYLAND = "1";
+  };
 
   programs.dconf.enable = true;
   

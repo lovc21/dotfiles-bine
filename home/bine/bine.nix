@@ -32,6 +32,13 @@
   # Enable nvim
   features.editor.neovim.enable = true;
 
+  # Enable desktop
+  features.desktop = {
+    fonts.enable = true;
+    hyprland.enable = true;
+    wayland.enable = true;
+  };
+
   home.packages = with pkgs; [
     # === TERMINALS ===
     alacritty
@@ -123,6 +130,7 @@
     chromium
     google-chrome
     brave
+    firefox
 
     # === COMMUNICATION ===
     slack
