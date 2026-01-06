@@ -37,6 +37,9 @@
     fonts.enable = true;
     hyprland.enable = true;
     wayland.enable = true;
+    hyprpaper.enable = true;
+    hyprlock.enable = true;
+    hypridle.enable = true;
   };
 
   home.packages = with pkgs; [

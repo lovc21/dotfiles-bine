@@ -31,6 +31,19 @@ in {
           "XCURSOR_THEME,Bibata-Modern-Ice"
         ];
 
+        monitor = [
+        # Laptop - 2880x1920 @ 120Hz, scale 2 (left)
+        "eDP-1, 2880x1920@120, 0x0, 2"
+        
+        # Dell 4K - 3840x2160 @ 60Hz (center, to the right of laptop)
+        "DP-1, 3840x2160@60, 1440x0, 1"
+        
+        # Dell 1080p - rotated left (portrait), to the right of 4K
+        "DP-2, 1920x1080@60, 5280x0, 1, transform, 3"
+        
+        ", preferred, auto, 1"
+       ];
+
         input = {
           kb_layout = "us";
           kb_variant = "";
@@ -75,7 +88,7 @@ in {
             color = "rgba(1a1b2666)";
           };
         };
-        
+                
         animations = {
           enabled = true;
           bezier = [
@@ -98,44 +111,7 @@ in {
         };
 
         master = {};
-
-        gestures = {
-          workspace_swipe = true;
-          workspace_swipe_fingers = 3;
-        };
-
-        windowrule = [
-          "float, file_progress"
-          "float, confirm"
-          "float, dialog"
-          "float, download"
-          "float, notification"
-          "float, error"
-          "float, splash"
-          "float, confirmreset"
-          "float, title:Open File"
-          "float, title:branchdialog"
-          "float, Lxappearance"
-          "float, wofi"
-          "float, dunst"
-          "animation none, wofi"
-          "float, viewnior"
-          "float, feh"
-          "float, pavucontrol-qt"
-          "float, pavucontrol"
-          "float, file-roller"
-          "fullscreen, wlogout"
-          "float, title:wlogout"
-          "fullscreen, title:wlogout"
-          "idleinhibit focus, mpv"
-          "idleinhibit fullscreen, firefox"
-          "float, title:^(Media viewer)$"
-          "float, title:^(Volume Control)$"
-          "float, title:^(Picture-in-Picture)$"
-          "size 800 600, title:^(Volume Control)$"
-          "move 75 44%, title:^(Volume Control)$"
-        ];
-
+         
         "$mainMod" = "SUPER";
 
         bind = [
@@ -205,6 +181,35 @@ in {
         ];
 
         windowrulev2 = [
+          "float, class:(file_progress)"
+          "float, class:(confirm)"
+          "float, class:(dialog)"
+          "float, class:(download)"
+          "float, class:(notification)"
+          "float, class:(error)"
+          "float, class:(splash)"
+          "float, class:(confirmreset)"
+          "float, title:(Open File)"
+          "float, title:(branchdialog)"
+          "float, class:(Lxappearance)"
+          "float, class:(wofi)"
+          "float, class:(dunst)"
+          "noanim, class:(wofi)"
+          "float, class:(viewnior)"
+          "float, class:(feh)"
+          "float, class:(pavucontrol-qt)"
+          "float, class:(pavucontrol)"
+          "float, class:(file-roller)"
+          "fullscreen, class:(wlogout)"
+          "float, title:(wlogout)"
+          "fullscreen, title:(wlogout)"
+          "idleinhibit focus, class:(mpv)"
+          "idleinhibit fullscreen, class:(firefox)"
+          "float, title:(Media viewer)"
+          "float, title:(Volume Control)"
+          "float, title:(Picture-in-Picture)"
+          "size 800 600, title:(Volume Control)"
+          "move 75 44%, title:(Volume Control)"
           "workspace 2, class:(firefox)"
           "workspace 2, class:(brave-browser)"
           "workspace 3, class:(Slack)"
@@ -213,7 +218,18 @@ in {
           "opacity 1.0, class:(firefox)"
           "opacity 1.0, class:(brave-browser)"
         ];
-
+        
+        workspace = [
+          "1, monitor:eDP-1, default:true"
+          "2, monitor:DP-1, default:true"
+          "3, monitor:DP-2, default:true"
+          "4, monitor:eDP-1"
+          "5, monitor:DP-1"
+          "6, monitor:DP-2"
+          "7, monitor:eDP-1"
+          "8, monitor:DP-1"
+          "9, monitor:DP-2"
+        ];
       };
     };
 

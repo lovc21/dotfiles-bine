@@ -29,7 +29,7 @@ in {
         * {
             border: none;
             border-radius: 0;
-            font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free";
+            font-family: "JetBrainsMono Nerd Font", "FiraCode Nerd Font";
             font-weight: bold;
             font-size: 14px;
             min-height: 0;
@@ -93,6 +93,8 @@ in {
         #network,
         #cpu,
         #memory,
+        #temperature,
+        #disk,
         #workspaces,
         #tray,
         #backlight {
@@ -130,15 +132,15 @@ in {
             border-right: 0px;
         }
 
-        #network {
-            color: @yellow;
+        #custom-weather {
+            color: @cyan;
+            border-radius: 0px 10px 10px 0px;
             border-left: 0px;
-            border-right: 0px;
         }
 
         #cpu {
             color: @green;
-            border-left: 0px;
+            border-radius: 10px 0px 0px 10px;
             border-right: 0px;
         }
 
@@ -148,16 +150,43 @@ in {
             border-right: 0px;
         }
 
+        #temperature {
+            color: @orange;
+            border-left: 0px;
+            border-right: 0px;
+        }
+
+        #disk {
+            color: @purple;
+            border-radius: 0px 10px 10px 0px;
+            border-left: 0px;
+            margin-right: 10px;
+        }
+
+        #backlight {
+            color: @yellow;
+            border-radius: 10px 0px 0px 10px;
+            border-right: 0px;
+        }
+
         #pulseaudio {
             color: @blue;
             border-left: 0px;
             border-right: 0px;
         }
 
-        #pulseaudio.microphone {
-            color: @pink;
+        #pulseaudio.muted {
+            color: @comment;
+        }
+
+        #network {
+            color: @green;
             border-left: 0px;
             border-right: 0px;
+        }
+
+        #network.disconnected {
+            color: @red;
         }
 
         #battery {
@@ -190,19 +219,6 @@ in {
                 color: @background;
             }
         }
-
-        #custom-weather {
-            color: @cyan;
-            border-radius: 0px 10px 10px 0px;
-            border-left: 0px;
-            margin-left: 0px;
-        }
-
-        #backlight {
-            color: @yellow;
-            border-left: 0px;
-            border-right: 0px;
-        }
       '';
       settings = {
         mainbar = {
@@ -213,11 +229,13 @@ in {
           passthrough = false;
           gtk-layer-shell = true;
           height = 0;
-          modules-left = ["hyprland/workspaces" "hyprland/window"];
-          modules-center = ["clock"];
+          modules-left = ["clock" "custom/weather" "hyprland/workspaces"];
+          modules-center = ["hyprland/window"];
           modules-right = [
             "cpu"
             "memory"
+            "temperature"
+            "disk"
             "backlight"
             "pulseaudio"
             "network"
@@ -233,22 +251,21 @@ in {
 
           "hyprland/workspaces" = {
             disable-scroll = false;
-            all-outputs = true;
+            all-outputs = false;
             on-click = "activate";
-            format = "{icon}";
+            format = " {name} {icon} ";
             on-scroll-up = "hyprctl dispatch workspace e+1";
             on-scroll-down = "hyprctl dispatch workspace e-1";
             format-icons = {
-              "1" = "󰎤";
-              "2" = "󰎧";
-              "3" = "󰎪";
-              "4" = "󰎭";
-              "5" = "󰎱";
-              "6" = "󰎳";
-              "7" = "󰎶";
-              "8" = "󰎹";
-              "9" = "󰎼";
-              "10" = "󰽽";
+              "1" = "";
+              "2" = "";
+              "3" = "";
+              "4" = "";
+              "5" = "";
+              "6" = "";
+              "7" = "";
+              "8" = "";
+              "9" = "";
               "urgent" = "";
               "default" = "";
             };
@@ -261,20 +278,46 @@ in {
             };
           };
 
+          "custom/weather" = {
+            format = "{}";
+            tooltip = true;
+            interval = 1800;
+            exec = "wttrbar --location Postojna --fahrenheit false";
+            return-type = "json";
+          };
+
           cpu = {
-            interval = 10;
+            interval = 5;
             format = "  {usage}%";
             max-length = 10;
+            on-click = "ghostty -e htop";
           };
 
           memory = {
+            interval = 10;
+            format = "  {percentage}%";
+            format-alt = "  {used:0.1f}G / {total:0.1f}G";
+            max-length = 15;
+            on-click = "ghostty -e htop";
+          };
+
+          temperature = {
+            thermal-zone = 0;
+            critical-threshold = 80;
+            format = " {temperatureC}°C";
+            format-critical = " {temperatureC}°C";
+            interval = 5;
+          };
+
+          disk = {
             interval = 30;
-            format = "  {}%";
-            max-length = 10;
+            format = "󰋊 {percentage_used}%";
+            format-alt = "󰋊 {used} / {total}";
+            path = "/";
           };
 
           backlight = {
-            device = "intel_backlight";
+            device = "amdgpu_bl1";
             format = "{icon} {percent}%";
             format-icons = ["" "" "" "" "" "" "" "" ""];
             on-scroll-up = "brightnessctl set 5%+";
@@ -287,39 +330,64 @@ in {
           };
 
           clock = {
-            format = "  {:%H:%M   %a %d %b}";
+            format = "  {:%H:%M}";
+            format-alt = "  {:%A, %B %d, %Y (%R)}";
             tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+            calendar = {
+              mode = "year";
+              mode-mon-col = 3;
+              weeks-pos = "right";
+              on-scroll = 1;
+              format = {
+                months = "<span color='#c0caf5'><b>{}</b></span>";
+                days = "<span color='#565f89'><b>{}</b></span>";
+                weeks = "<span color='#7aa2f7'><b>W{}</b></span>";
+                weekdays = "<span color='#ff9e64'><b>{}</b></span>";
+                today = "<span color='#f7768e'><b><u>{}</u></b></span>";
+              };
+            };
           };
 
           network = {
             format-wifi = "  {signalStrength}%";
             format-ethernet = "󰈀 {ipaddr}";
             format-disconnected = "󰖪 ";
-            tooltip-format-wifi = "{essid} ({signalStrength}%)\n{ipaddr}";
-            tooltip-format-ethernet = "{ifname}\n{ipaddr}";
-            on-click = "nm-connection-editor";
+            format-alt = "  {bandwidthDownBits}   {bandwidthUpBits}";
+            tooltip-format-wifi = "{essid} ({signalStrength}%)\n{ipaddr}\n {bandwidthDownBits}  {bandwidthUpBits}";
+            tooltip-format-ethernet = "{ifname}\n{ipaddr}\n {bandwidthDownBits}  {bandwidthUpBits}";
+            interval = 5;
+            on-click-right = "nm-connection-editor";
           };
 
           pulseaudio = {
             format = "{icon} {volume}%";
             format-muted = "󰝟 ";
             format-icons = {
+              headphone = "";
+              hands-free = "";
+              headset = "";
+              phone = "";
+              portable = "";
+              car = "";
               default = ["" "" ""];
             };
             on-click = "pavucontrol";
+            on-click-right = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
             scroll-step = 5;
           };
 
           battery = {
             states = {
+              good = 95;
               warning = 30;
               critical = 15;
             };
             format = "{icon} {capacity}%";
             format-charging = "󰂄 {capacity}%";
-            format-plugged = "󰂄 {capacity}%";
+            format-plugged = "󱘖 {capacity}%";
+            format-alt = "{icon} {time}";
             format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
-            tooltip-format = "{timeTo}\n{capacity}%";
+            tooltip-format = "{timeTo}\nCapacity: {capacity}%\nPower: {power}W";
           };
         };
       };
@@ -401,50 +469,80 @@ in {
     };
 
     home.packages = with pkgs; [
+      # Screenshot & Recording
       grim
       slurp
       wf-recorder
       wl-mirror
+      
+      # Clipboard
       wl-clipboard
       clipman
+      
+      # Utilities
       wlogout
-      dunst
-      libnotify
-      qt6.qtwayland
-      libsForQt5.qt5.qtwayland
       waypipe
       wtype
       ydotool
+      
+      # Notifications
+      dunst
+      libnotify
+      
+      # Qt Wayland support
+      qt6.qtwayland
+      libsForQt5.qt5.qtwayland
+      
+      # Audio
       pavucontrol
+      
+      # Network
       networkmanagerapplet
+      
+      # File manager
       nautilus
+      
+      # Weather for waybar
+      wttrbar
+      
+      # Brightness
+      brightnessctl
     ];
 
     services.dunst = {
       enable = true;
       settings = {
         global = {
+          width = 300;
+          height = 100;
+          offset = "30x50";
+          origin = "top-right";
+          transparency = 10;
           font = "JetBrainsMono Nerd Font 11";
           frame_color = "#7aa2f7";
           separator_color = "frame";
           corner_radius = 10;
           background = "#1a1b26";
           foreground = "#c0caf5";
+          timeout = 5;
         };
         urgency_low = {
           background = "#1a1b26";
           foreground = "#c0caf5";
           frame_color = "#9ece6a";
+          timeout = 3;
         };
         urgency_normal = {
           background = "#1a1b26";
           foreground = "#c0caf5";
           frame_color = "#7aa2f7";
+          timeout = 5;
         };
         urgency_critical = {
           background = "#1a1b26";
           foreground = "#c0caf5";
           frame_color = "#f7768e";
+          timeout = 0;
         };
       };
     };
