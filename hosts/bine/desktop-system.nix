@@ -22,14 +22,29 @@
   };
 
   # Fonts
-  fonts.packages = with pkgs; [
-    maple-mono.NF
-    maple-mono.Normal-NF
-    nerd-fonts.hack
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.monaspace
-    nerd-fonts.roboto-mono
-  ];
+  fonts = {
+    enableDefaultPackages = false;
+    fontDir.enable = true;
+    packages = with pkgs; [
+      maple-mono.NF
+      maple-mono.Normal-NF
+      nerd-fonts.hack
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.monaspace
+      nerd-fonts.roboto-mono
+
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-color-emoji
+    ];
+
+    fontconfig.defaultFonts = {
+      serif = [ "Source Han Serif SC" "Noto Color Emoji" ];
+      sansSerif = [ "Source Han Sans SC" "Noto Color Emoji" ];
+      monospace = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" ];
+      emoji = [ "Noto Color Emoji" ];
+    };
+  };
 
   # Security / Keyring
   services.gnome.gnome-keyring.enable = true;
@@ -39,3 +54,6 @@
     GSM_SKIP_SSH_AGENT_WORKAROUND = "1";
   };
 }
+
+
+

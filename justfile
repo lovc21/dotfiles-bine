@@ -31,6 +31,8 @@ diff:
 # Clean old generations (older than 7 days)
 [group('nix')]
 clean:
+    sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 7d
+    nix profile wipe-history --profile ~/.local/state/nix/profiles/home-manager --older-than 7d
     sudo nix-collect-garbage --delete-older-than 7d
 
 # Show generation history

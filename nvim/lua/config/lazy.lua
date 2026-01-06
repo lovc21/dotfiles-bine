@@ -236,16 +236,3 @@ require("lazy").setup({
     },
   },
 })
-
-vim.g.clipboard = {
-  name = "xsel",
-  copy = {
-    ["+"] = "xsel --clipboard --input",
-    ["*"] = "xsel --primary --input",
-  },
-  paste = {
-    ["+"] = "xsel --clipboard --output",
-    ["*"] = "xsel --primary --output",
-  },
-  cache_enabled = 1,
-}

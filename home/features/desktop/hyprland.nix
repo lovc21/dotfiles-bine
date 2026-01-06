@@ -224,6 +224,14 @@ in {
           "workspace 5, class:(spotify)"
           "opacity 1.0, class:(firefox)"
           "opacity 1.0, class:(brave-browser)"
+          "stayfocused, title:^()$, class:^(steam)$"
+          "minsize 1 1, title:^()$, class:^(steam)$"
+          "tile, class:^(steam)$"
+          "fullscreen, class:^(steam)$"
+          "float, title:^(Picture-in-Picture)$"
+          "pin, title:^(Picture-in-Picture)$" 
+          "move 75% 75%, title:^(Picture-in-Picture)$"
+          "size 25% 25%, title:^(Picture-in-Picture)$"
         ];
         
         workspace = [
