@@ -9,8 +9,6 @@
 
 ---
 
-Config still in the works, will update soon :)
-
 ## Bootstrap
 
 ```bash

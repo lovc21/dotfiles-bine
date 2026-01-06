@@ -10,6 +10,7 @@
       ./hardware-extra.nix
       ./desktop-system.nix
       ./locale.nix
+      ./specialisations.nix
     ];
   
   # Configure the automatic mounting of external

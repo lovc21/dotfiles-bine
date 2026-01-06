@@ -57,11 +57,19 @@
       name = "Bibata-Modern-Ice";
       package = pkgs.bibata-cursors;
     };
-  
+  };
+
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
     };
+  };
+
+  # Enable Qt
+  qt = {
+    enable = true;
+    platformTheme.name = "gtk";
+    style.name = "gtk2";
   };
 
   home.packages = with pkgs; [
@@ -155,7 +163,7 @@
     # === THEMES ===  
     tokyonight-gtk-theme
     papirus-icon-theme
-    tela-circle-icon-theme
+    # tela-circle-icon-theme
     bibata-cursors
       
     # === BROWSERS ===
