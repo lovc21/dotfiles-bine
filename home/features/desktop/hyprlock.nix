@@ -100,7 +100,7 @@ in {
 
       label {
           monitor =
-          text = Hello, $USER
+          text = Hello, Jakob
           color = rgb(bb9af7)
           font_size = 18
           font_family = JetBrainsMono Nerd Font

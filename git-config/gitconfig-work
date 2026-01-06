@@ -1,9 +1,9 @@
 [user]
   name = Jakob 
 	email = jakob.dekleva@flare.network
-#  signingkey=0xD5FEBACC8AC79C8A 
-#[commit]
-#    gpgsign = true
+ signingkey=444DEA39A8D5BA4ED7835EB5A01F2D55A9B6D74C 
+[commit]
+   gpgsign = true
 [credential]
 	helper = store
 [url "git@github.com:"]

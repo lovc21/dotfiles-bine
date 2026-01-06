@@ -2,8 +2,8 @@
     name  = Jakob
     email = jakob.dekleva@gmail.com
 
-#[commit]
-#    gpgsign = true
+[commit]
+   gpgsign = true
 
 # If the repo is anywhere under ~/devrev/, include the WORK config
 [includeIf "gitdir:~/flare/"]
