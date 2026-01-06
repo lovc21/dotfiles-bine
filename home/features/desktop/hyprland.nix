@@ -31,6 +31,10 @@ in {
           "XCURSOR_THEME,Bibata-Modern-Ice"
         ];
 
+        gesture = [
+          "3, horizontal, workspace"
+        ];
+
         monitor = [
         # Laptop - 2880x1920 @ 120Hz, scale 2 (left)
         "eDP-1, 2880x1920@120, 0x0, 2"
@@ -161,6 +165,9 @@ in {
           "$mainMod SHIFT, 0, movetoworkspace, 10"
           "$mainMod, mouse_down, workspace, e+1"
           "$mainMod, mouse_up, workspace, e-1"
+          "$mainMod SHIFT, L, exec, loginctl lock-session"
+          "CTRL ALT, left, workspace, m-1"
+          "CTRL ALT, right, workspace, m+1"
         ];
 
         bindm = [

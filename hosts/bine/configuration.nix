@@ -43,9 +43,13 @@
   # --> when running on battery power
   # --> when connected to external power
   # --> when connected to a dock that has external power
-  services.logind.settings.Login.HandleLidSwitch = "suspend";
-  services.logind.settings.Login.HandleLidSwitchExternalPower = "suspend";
-  services.logind.settings.Login.HandleLidSwitchDocked = "suspend";
+# Configure how the system sleeps
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend";
+    HandleLidSwitchExternalPower = "suspend";
+    HandleLidSwitchDocked = "suspend";
+    HandlePowerKey = "suspend";
+  };
 
 
   # Configure the automatic mounting of external
@@ -134,7 +138,8 @@
   # Enable for sudo and screensaver
   security.pam.services.sudo.fprintAuth = true;
   security.pam.services.gnome-screensaver.fprintAuth = true;
-  
+  # security.pam.services.hyprlock.fprintAuth = true;
+
   # Enable support for Bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;

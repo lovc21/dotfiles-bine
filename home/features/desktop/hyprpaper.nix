@@ -19,13 +19,13 @@ in {
     home.file."Pictures/wallpapers/.keep".text = "";
 
     xdg.configFile."hypr/hyprpaper.conf".text = ''
-      preload = ~/home/bine/Downloads/b-098.jpg
+      preload = ~/Pictures/wallpapers/b-180.jpg
 
-      wallpaper = eDP-1, ~/home/bine/Downloads/b-098.jpg
-      wallpaper = DP-1, ~/home/bine/Downloads/b-098.jpg
-      wallpaper = DP-2, ~/home/bine/Downloads/b-098.jpg
+      wallpaper = eDP-1, ~/Pictures/wallpapers/b-180.jpg
+      wallpaper = DP-1, ~/Pictures/wallpapers/b-180.jpg
+      wallpaper = DP-2, ~/Pictures/wallpapers/b-180.jpg
+
       splash = false
-      splash_offset = 2.0
       ipc = on
     '';
   };

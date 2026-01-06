@@ -29,7 +29,7 @@ in {
         * {
             border: none;
             border-radius: 0;
-            font-family: "JetBrainsMono Nerd Font", "FiraCode Nerd Font";
+            font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", "FiraCode Nerd Font";
             font-weight: bold;
             font-size: 14px;
             min-height: 0;
@@ -127,15 +127,15 @@ in {
 
         #clock {
             color: @orange;
-            border-radius: 10px 0px 0px 10px;
-            margin-left: 10px;
-            border-right: 0px;
+            border-radius: 10px;
+            margin-left: 0px;
+            margin-right: 0px;
         }
 
         #custom-weather {
             color: @cyan;
-            border-radius: 0px 10px 10px 0px;
-            border-left: 0px;
+            border-radius: 10px;
+            margin-left: 10px;
         }
 
         #cpu {
@@ -229,8 +229,9 @@ in {
           passthrough = false;
           gtk-layer-shell = true;
           height = 0;
-          modules-left = ["clock" "custom/weather" "hyprland/workspaces"];
-          modules-center = ["hyprland/window"];
+          # --- FIXED: Moved clock to center, fixed weather position ---
+          modules-left = ["custom/weather" "hyprland/workspaces" "hyprland/window"];
+          modules-center = ["clock"];
           modules-right = [
             "cpu"
             "memory"
@@ -246,7 +247,7 @@ in {
           "hyprland/window" = {
             format = "  {}";
             separate-outputs = true;
-            max-length = 50;
+            max-length = 30;
           };
 
           "hyprland/workspaces" = {
@@ -278,25 +279,28 @@ in {
             };
           };
 
+          # --- FIXED: Replaced wttrbar with simpler curl command ---
           "custom/weather" = {
             format = "{}";
             tooltip = true;
-            interval = 1800;
-            exec = "wttrbar --location Postojna --fahrenheit false";
-            return-type = "json";
+            interval = 3600;
+            # Loads weather for Postojna, formatting: Condition + Temperature
+            exec = "curl -s 'https://wttr.in/Postojna?format=%C+%t'";
+            return-type = ""; 
           };
 
+          # --- FIXED: Added Nerd Font Icons to format strings ---
           cpu = {
             interval = 5;
-            format = "  {usage}%";
+            format = "  {usage}%";
             max-length = 10;
             on-click = "ghostty -e htop";
           };
 
           memory = {
             interval = 10;
-            format = "  {percentage}%";
-            format-alt = "  {used:0.1f}G / {total:0.1f}G";
+            format = "  {percentage}%";
+            format-alt = "  {used:0.1f}G / {total:0.1f}G";
             max-length = 15;
             on-click = "ghostty -e htop";
           };
@@ -304,22 +308,22 @@ in {
           temperature = {
             thermal-zone = 0;
             critical-threshold = 80;
-            format = " {temperatureC}°C";
-            format-critical = " {temperatureC}°C";
+            format = " {temperatureC}°C";
+            format-critical = " {temperatureC}°C";
             interval = 5;
           };
 
           disk = {
             interval = 30;
-            format = "󰋊 {percentage_used}%";
-            format-alt = "󰋊 {used} / {total}";
+            format = "  {percentage_used}%";
+            format-alt = "  {used} / {total}";
             path = "/";
           };
 
           backlight = {
             device = "amdgpu_bl1";
             format = "{icon} {percent}%";
-            format-icons = ["" "" "" "" "" "" "" "" ""];
+            format-icons = ["" "" "" "" "" "" "" "" ""];
             on-scroll-up = "brightnessctl set 5%+";
             on-scroll-down = "brightnessctl set 5%-";
           };
@@ -330,8 +334,8 @@ in {
           };
 
           clock = {
-            format = "  {:%H:%M}";
-            format-alt = "  {:%A, %B %d, %Y (%R)}";
+            format = "  {:%H:%M}";
+            format-alt = "  {:%A, %B %d, %Y (%R)}";
             tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
             calendar = {
               mode = "year";
@@ -349,12 +353,12 @@ in {
           };
 
           network = {
-            format-wifi = "  {signalStrength}%";
+            format-wifi = "  {signalStrength}%";
             format-ethernet = "󰈀 {ipaddr}";
             format-disconnected = "󰖪 ";
-            format-alt = "  {bandwidthDownBits}   {bandwidthUpBits}";
-            tooltip-format-wifi = "{essid} ({signalStrength}%)\n{ipaddr}\n {bandwidthDownBits}  {bandwidthUpBits}";
-            tooltip-format-ethernet = "{ifname}\n{ipaddr}\n {bandwidthDownBits}  {bandwidthUpBits}";
+            format-alt = " {bandwidthDownBits}   {bandwidthUpBits}";
+            tooltip-format-wifi = "{essid} ({signalStrength}%)\n{ipaddr}\n {bandwidthDownBits}   {bandwidthUpBits}";
+            tooltip-format-ethernet = "{ifname}\n{ipaddr}\n {bandwidthDownBits}   {bandwidthUpBits}";
             interval = 5;
             on-click-right = "nm-connection-editor";
           };
@@ -363,13 +367,13 @@ in {
             format = "{icon} {volume}%";
             format-muted = "󰝟 ";
             format-icons = {
-              headphone = "";
-              hands-free = "";
-              headset = "";
-              phone = "";
-              portable = "";
-              car = "";
-              default = ["" "" ""];
+              headphone = " ";
+              hands-free = " ";
+              headset = " ";
+              phone = " ";
+              portable = " ";
+              car = " ";
+              default = [" " " " " "];
             };
             on-click = "pavucontrol";
             on-click-right = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
@@ -502,7 +506,7 @@ in {
       # File manager
       nautilus
       
-      # Weather for waybar
+      # Weather - Kept just in case, but using curl now
       wttrbar
       
       # Brightness

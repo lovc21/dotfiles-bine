@@ -23,6 +23,12 @@ in {
           no_fade_out = false
       }
 
+      # --- ADDED: New Parallel Auth Config ---
+      auth {
+          fingerprint:enabled = true
+      }
+      # ---------------------------------------
+
       background {
           monitor =
           path = screenshot
@@ -46,9 +52,9 @@ in {
           outer_color = rgb(7aa2f7)
           inner_color = rgb(1a1b26)
           font_color = rgb(c0caf5)
-          fade_on_empty = true
+          fade_on_empty = false
           fade_timeout = 1000
-          placeholder_text = <i>Password...</i>
+          placeholder_text = <i>Password or Fingerprint...</i>
           hide_input = false
           rounding = 15
           check_color = rgb(9ece6a)
