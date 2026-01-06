@@ -42,8 +42,31 @@
     hypridle.enable = true;
   };
 
+  # Set Tokyo Night as default theme
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Tokyonight-Dark";
+      package = pkgs.tokyonight-gtk-theme;
+    };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+    cursorTheme = {
+      name = "Bibata-Modern-Ice";
+      package = pkgs.bibata-cursors;
+    };
+  
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
+
   home.packages = with pkgs; [
-    # === TERMINALS ===
+  
+  # === TERMINALS ===
     alacritty
     
     # === SHELL ===
@@ -128,7 +151,13 @@
     unzip
     zip
     just
-    
+
+    # === THEMES ===  
+    tokyonight-gtk-theme
+    papirus-icon-theme
+    tela-circle-icon-theme
+    bibata-cursors
+      
     # === BROWSERS ===
     chromium
     google-chrome
@@ -158,5 +187,8 @@
     glow
     slides
     ollama
+
+    gnome-tweaks
+    dconf-editor
   ];
 }
