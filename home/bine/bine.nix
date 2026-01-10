@@ -133,7 +133,6 @@
     
     # Zig
     zig
-    zls
     
     # Rust
     rustc
@@ -152,6 +151,7 @@
     nmap
     tcpdump
     wireshark
+    dig
     
     # === FILE MANAGEMENT ===
     yazi

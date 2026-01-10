@@ -81,7 +81,8 @@ in {
             color: @foreground;
             border-radius: 10px;
         }
-
+        
+        #language,
         #custom-language,
         #custom-updates,
         #custom-caffeine,
@@ -213,6 +214,13 @@ in {
             animation-direction: alternate;
         }
 
+        #language {
+            color: @pink;
+            border-radius: 10px;
+            margin-left: 10px;
+            margin-right: 5px;
+        }
+
         @keyframes blink {
             to {
                 background-color: @red;
@@ -233,6 +241,7 @@ in {
           modules-left = ["custom/weather" "hyprland/workspaces" "hyprland/window"];
           modules-center = ["clock"];
           modules-right = [
+            "hyprland/language"
             "cpu"
             "memory"
             "temperature"
@@ -279,17 +288,21 @@ in {
             };
           };
 
-          # --- FIXED: Replaced wttrbar with simpler curl command ---
+          "hyprland/language" = {
+            format = " {}";
+            format-english = "US";
+            format-slovenian = "SI";
+            on-click = "hyprctl switchxkblayout all next";
+          };
+
           "custom/weather" = {
             format = "{}";
             tooltip = true;
             interval = 3600;
-            # Loads weather for Postojna, formatting: Condition + Temperature
             exec = "curl -s 'https://wttr.in/Postojna?format=%C+%t'";
             return-type = ""; 
           };
 
-          # --- FIXED: Added Nerd Font Icons to format strings ---
           cpu = {
             interval = 5;
             format = "  {usage}%";

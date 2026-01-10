@@ -49,11 +49,11 @@ in {
        ];
 
         input = {
-          kb_layout = "us";
+          kb_layout = "us,si";
           kb_variant = "";
           kb_model = "";
           kb_rules = "";
-          kb_options = "ctrl:nocaps";
+          kb_options = "ctrl:nocaps,grp:alt_shift_toggle";
           follow_mouse = 1;
 
           touchpad = {

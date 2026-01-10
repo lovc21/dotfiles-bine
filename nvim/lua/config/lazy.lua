@@ -153,7 +153,7 @@ require("lazy").setup({
     },
     -- Add the bashls configuration here
     {
-      "williamboman/mason.nvim",
+      "mason-org/mason.nvim",
       opts = {
         ensure_installed = {
           "bash-language-server",
@@ -170,7 +170,7 @@ require("lazy").setup({
         },
       },
       dependencies = {
-        "williamboman/mason-lspconfig.nvim",
+        "mason-org/mason-lspconfig.nvim",
       },
     },
     {
