@@ -23,11 +23,9 @@ in {
           no_fade_out = false
       }
 
-      # --- ADDED: New Parallel Auth Config ---
       auth {
           fingerprint:enabled = true
       }
-      # ---------------------------------------
 
       background {
           monitor =

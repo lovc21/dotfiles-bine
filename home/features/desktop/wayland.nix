@@ -299,8 +299,13 @@ in {
             format = "{}";
             tooltip = true;
             interval = 3600;
-            exec = "curl -s 'https://wttr.in/Postojna?format=%C+%t'";
-            return-type = ""; 
+            exec = ''
+              LOC=$(curl -s https://ipinfo.io/json)
+              CITY=$(echo $LOC | jq -r '.city')
+              COUNTRY=$(echo $LOC | jq -r '.country')
+              curl -s "https://wttr.in/$CITY?format=%C,+%t,+$CITY+$COUNTRY" | sed 's/+//'
+            '';
+            return-type = "";
           };
 
           cpu = {
@@ -518,9 +523,6 @@ in {
       
       # File manager
       nautilus
-      
-      # Weather - Kept just in case, but using curl now
-      wttrbar
       
       # Brightness
       brightnessctl
