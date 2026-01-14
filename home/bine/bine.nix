@@ -196,6 +196,10 @@
     slides
     ollama
 
+    # === EDITORS ===
+    vscode
+
+    # === MISC ===
     gnome-tweaks
     dconf-editor
   ];
