@@ -21,6 +21,7 @@
     zoxide.enable = true;
     neofetch.enable = true;
     starship.enable = true;
+    ai.enable = true;
   };
   
   # Enable git config
@@ -74,7 +75,7 @@
 
   home.packages = with pkgs; [
   
-  # === TERMINALS ===
+    # === TERMINALS ===
     alacritty
     
     # === SHELL ===

@@ -7,6 +7,7 @@
     ./zoxide.nix
     ./neofetch.nix
     ./starship.nix
+    ./ai.nix
   ];
 
   home.packages = with pkgs; [
