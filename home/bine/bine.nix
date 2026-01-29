@@ -22,6 +22,7 @@
     neofetch.enable = true;
     starship.enable = true;
     ai.enable = true;
+    direnv.enable = true;
   };
   
   # Enable git config

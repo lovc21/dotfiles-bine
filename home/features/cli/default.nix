@@ -8,6 +8,7 @@
     ./neofetch.nix
     ./starship.nix
     ./ai.nix
+    ./direnv.nix
   ];
 
   home.packages = with pkgs; [
