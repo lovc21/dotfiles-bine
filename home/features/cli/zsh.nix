@@ -106,6 +106,39 @@ in
 
         # Neovim path (from dotfiles)
         export PATH="$PATH:~/Downloads/nvim-linux64/bin"
+
+        tf() {
+          local version=""
+          local tf_file=""
+          
+
+          if [[ -f "terraform.tf" ]]; then
+            tf_file="terraform.tf"
+          elif [[ -f "versions.tf" ]]; then
+            tf_file="versions.tf"
+          fi
+          
+          if [[ -n "$tf_file" ]]; then
+            version=$(grep -oP 'required_version\s*=\s*"[~><=\s]*\K[0-9]+\.[0-9]+\.[0-9]+' "$tf_file" 2>/dev/null | head -1)
+            
+            if [[ -z "$version" ]]; then
+              version=$(grep -oP 'required_version\s*=\s*"[~><=\s]*\K[0-9]+\.[0-9]+' "$tf_file" 2>/dev/null | head -1)
+              if [[ -n "$version" ]]; then
+                version="''${version}.0"
+              fi
+            fi
+          fi
+          
+          if [[ -n "$version" ]]; then
+            echo "󱁢 Terraform ''$version" >&2
+            nix shell github:stackbuilders/nixpkgs-terraform#"\"terraform-''${version}\"" -c terraform "$@"
+          else
+            command terraform "$@"
+          fi
+        } 
+        
+        alias terraform='tf'
+
       '';
 
       # Plugins autosuggestions and syntax highlighting
