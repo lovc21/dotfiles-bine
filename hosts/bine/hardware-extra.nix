@@ -36,10 +36,7 @@
   services.udev.packages = [ pkgs.yubikey-personalization ];
   
   # Power Management
-  services.logind.settings.Login = {
-    HandleLidSwitch = "suspend";
-    HandleLidSwitchExternalPower = "suspend";
-    HandleLidSwitchDocked = "suspend";
-    HandlePowerKey = "suspend";
-  };
+  services.logind.lidSwitch = "suspend";
+  services.logind.lidSwitchExternalPower = "suspend";
+  services.logind.lidSwitchDocked = "suspend";
 }
