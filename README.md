@@ -21,7 +21,7 @@ This config is heavily inspired by this lovely people:
 
 - [Sascha Koenig/config and cool videos](https://code.m3ta.dev/m3tam3re/nixcfg/src/branch/video18/)
 - [gkapfham/Framework 13 AMD Laptop NixOS Configuration](https://github.com/gkapfham/nixos/tree/main)
-- [Ryan Yin /config](https://github.com/mkasberg/dotfiles)
+- [Ryan Yin /config](https://github.com/ryan4yin/nix-config)
 - [logandonley/config](https://github.com/logandonley/nixos-configs)
 
 Thanks to all of you <3
