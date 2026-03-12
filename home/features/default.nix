@@ -5,5 +5,6 @@
     ./terminal
     ./editor
     ./desktop
+    ./vpn
   ];
 }

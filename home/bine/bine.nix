@@ -44,6 +44,12 @@
     hypridle.enable = true;
   };
 
+  # Enable VPN
+  features.vpn.protonvpn = {
+    enable = true;
+    useGui = true;
+  };
+
   # Set Tokyo Night as default theme
   gtk = {
     enable = true;
