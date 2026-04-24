@@ -18,15 +18,17 @@ in {
 
     home.file."Pictures/wallpapers/.keep".text = "";
 
-    xdg.configFile."hypr/hyprpaper.conf".text = ''
-      preload = ${config.home.homeDirectory}/Pictures/wallpapers/b-180.jpg
-
-      wallpaper = eDP-1, ${config.home.homeDirectory}/Pictures/wallpapers/b-180.jpg
-      wallpaper = DP-1, ${config.home.homeDirectory}/Pictures/wallpapers/b-180.jpg
-      wallpaper = DP-2, ${config.home.homeDirectory}/Pictures/wallpapers/b-180.jpg
-
+    xdg.configFile."hypr/hyprpaper.conf".text = let
+      wp = "${config.home.homeDirectory}/Pictures/wallpapers/b-180.jpg";
+    in ''
       splash = false
       ipc = on
+
+      wallpaper {
+          monitor = *
+          path = ${wp}
+          fit_mode = cover
+      }
     '';
   };
 }

@@ -45,3 +45,13 @@ clean:
 history:
     nix profile history --profile /nix/var/nix/profiles/system
 
+# Capture power / ASPM / PSR / firewall / cursor snapshot
+[group('diagnostics')]
+bench:
+    bash scripts/bench.sh
+
+# Diff the two most recent bench runs
+[group('diagnostics')]
+bench-diff:
+    bash scripts/bench.sh diff
+

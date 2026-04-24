@@ -1,11 +1,9 @@
 { pkgs, ... }: {
-  # Firmware & Updates
-  # BIOS upgrade
-  services.fwupd.enable = true;
-  # Enable redistributable firmware
+  # Firmware & Updates. fwupd is already enabled by the
+  # nixos-hardware framework-amd-ai-300-series module; the testing remote
+  # gives us access to Framework BIOS betas pushed to LVFS.
+  services.fwupd.extraRemotes = [ "lvfs-testing" ];
   hardware.enableRedistributableFirmware = true;
-  # MT7925 firmware is available
-  hardware.firmware = [ pkgs.linux-firmware ];
 
   # Fingerprint Reader
   services.fprintd.enable = true;
@@ -40,5 +38,13 @@
     HandleLidSwitch = "suspend";
     HandleLidSwitchExternalPower = "suspend";
     HandleLidSwitchDocked = "suspend";
+  };
+
+  # Compressed swap-in-RAM. Cheap insurance against memory pressure under
+  # docker / browser / nix builds; no disk swap needed.
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 50;
   };
 }

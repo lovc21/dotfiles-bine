@@ -2,7 +2,7 @@
 
 <p align="center">
     <a href="https://nixos.org/">
-        <img src="https://img.shields.io/badge/NixOS-25.11-informational.svg?style=for-the-badge&logo=nixos&color=bb9af7&logoColor=c0caf5&labelColor=1a1b26"></a>
+        <img src="https://img.shields.io/badge/NixOS-26.05%20Yarara-informational.svg?style=for-the-badge&logo=nixos&color=bb9af7&logoColor=c0caf5&labelColor=1a1b26"></a>
     <a href="https://github.com/ryan4yin/nixos-and-flakes-book">
         <img src="https://img.shields.io/badge/Nix%20Flakes-learning-informational.svg?style=for-the-badge&logo=nixos&color=9ece6a&logoColor=c0caf5&labelColor=1a1b26"></a>
 </p>

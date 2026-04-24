@@ -12,6 +12,8 @@ in {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
+      package = null;
+      portalPackage = null;
       settings = {
         xwayland = {
           force_zero_scaling = true;
@@ -26,7 +28,6 @@ in {
 
         env = [
           "XCURSOR_SIZE,32"
-          "WLR_NO_HARDWARE_CURSORS,1"
           "GTK_THEME,Tokyonight-Dark"
           "XCURSOR_THEME,Bibata-Modern-Ice"
         ];

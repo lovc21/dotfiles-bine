@@ -31,9 +31,11 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Disable the firewall so that other
-  # services can connect to localhost
-  networking.firewall.enable = false;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ ];
+    allowedUDPPorts = [ ];
+  };
 
   # Automatically set the regulatory domain for
   # the wireless network card
@@ -85,7 +87,6 @@
   environment.sessionVariables = {
   QT_QPA_PLATFORMTHEME = "gtk3";
   NIXOS_OZONE_WL = "1";
-  WLR_NO_HARDWARE_CURSORS = "1";
   GDK_BACKEND = "wayland,x11";
   QT_QPA_PLATFORM = "wayland;xcb";
   MOZ_ENABLE_WAYLAND = "1";

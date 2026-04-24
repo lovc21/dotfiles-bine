@@ -7,6 +7,7 @@
   # Kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
   
-  # Kernel params for Framework 13 AMD
-  boot.kernelParams = [ "mem_sleep_default=s2idle" "amdgpu.dcdebugmask=0x10" "pcie_aspm=off" ];
+  # amdgpu.dcdebugmask=0x10 disables PSR (fixes cursor stutter on eDP).
+  # s2idle is already the default on AI 300 and pcie_aspm=off costs battery.
+  boot.kernelParams = [ "amdgpu.dcdebugmask=0x10" ];
 }
