@@ -19,7 +19,7 @@
     bat.enable = true;
     eza.enable = true;
     zoxide.enable = true;
-    neofetch.enable = true;
+    fastfetch.enable = true;
     starship.enable = true;
     ai.enable = true;
     direnv.enable = true;
@@ -53,6 +53,7 @@
   # Set Tokyo Night as default theme
   gtk = {
     enable = true;
+    gtk4.theme = config.gtk.theme;
     theme = {
       name = "Tokyonight-Dark";
       package = pkgs.tokyonight-gtk-theme;
@@ -154,8 +155,8 @@
     
     # Node.js
     nodejs_22
-    nodePackages.prettier
-    nodePackages.typescript-language-server
+    prettier
+    typescript-language-server
     
     # === MONITORING & DEBUGGING ===
     htop

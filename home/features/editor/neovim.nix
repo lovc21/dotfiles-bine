@@ -26,11 +26,11 @@ in
       # LSP servers (pre-installed, Mason can skip these)
       lua-language-server
       pyright
-      nodePackages.typescript-language-server
+      typescript-language-server
       gopls
       bash-language-server
       terraform-ls
-      nodePackages.vscode-langservers-extracted  # html, css, json
+      vscode-langservers-extracted  # html, css, json
       tailwindcss-language-server
       zls  # Zig LSP
       

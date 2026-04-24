@@ -5,7 +5,7 @@
     ./bat.nix
     ./eza.nix
     ./zoxide.nix
-    ./neofetch.nix
+    ./fastfetch.nix
     ./starship.nix
     ./ai.nix
     ./direnv.nix

@@ -28,6 +28,11 @@ diff:
     #!/usr/bin/env bash
     nix store diff-closures /run/current-system ./result
 
+# Update flake inputs
+[group('nix')]
+update:
+    nix flake update
+
 # Clean old generations (older than 7 days)
 [group('nix')]
 clean:

@@ -19,11 +19,11 @@ in {
     home.file."Pictures/wallpapers/.keep".text = "";
 
     xdg.configFile."hypr/hyprpaper.conf".text = ''
-      preload = ~/Pictures/wallpapers/b-180.jpg
+      preload = ${config.home.homeDirectory}/Pictures/wallpapers/b-180.jpg
 
-      wallpaper = eDP-1, ~/Pictures/wallpapers/b-180.jpg
-      wallpaper = DP-1, ~/Pictures/wallpapers/b-180.jpg
-      wallpaper = DP-2, ~/Pictures/wallpapers/b-180.jpg
+      wallpaper = eDP-1, ${config.home.homeDirectory}/Pictures/wallpapers/b-180.jpg
+      wallpaper = DP-1, ${config.home.homeDirectory}/Pictures/wallpapers/b-180.jpg
+      wallpaper = DP-2, ${config.home.homeDirectory}/Pictures/wallpapers/b-180.jpg
 
       splash = false
       ipc = on

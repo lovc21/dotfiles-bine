@@ -16,7 +16,7 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      (if cfg.useGui then protonvpn-gui else protonvpn-cli)
+      (if cfg.useGui then proton-vpn else proton-vpn-cli)
     ];
   };
 }

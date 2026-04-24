@@ -7,12 +7,12 @@ in
   options.features.git.enable = lib.mkEnableOption "git configuration";
 
   config = lib.mkIf cfg.enable {
-    # Install git and related tools
     home.packages = with pkgs; [
       git
       git-lfs
       delta
       gh
+      glab
       
       # YubiKey support
       yubikey-manager

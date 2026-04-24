@@ -19,3 +19,12 @@
 
 # GPG program will be found automatically in PATH
 # No need to hardcode /usr/bin/gpg in NixOS
+[credential "https://github.com"]
+	helper = 
+	helper = !/etc/profiles/per-user/bine/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/etc/profiles/per-user/bine/bin/gh auth git-credential
+[credential "https://gitlab.com"]
+	helper = 
+	helper = !/nix/store/k6cvfxidpfl59xw86lggm1s6gsy1jk3m-glab-1.74.0/bin/.glab-wrapped auth git-credential
