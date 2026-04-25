@@ -93,8 +93,13 @@
   };
 
   programs.dconf.enable = true;
-	
-  # Enable zsh 
+
+  programs.nh = {
+    enable = true;
+    flake = "/home/bine/jakob-stuff/dotfiles-bine";
+  };
+
+  # Enable zsh
   programs.zsh.enable = true;
 
   # === SERVICES ===

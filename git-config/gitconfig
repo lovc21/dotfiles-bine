@@ -5,7 +5,7 @@
 [commit]
    gpgsign = true
 
-# If the repo is anywhere under ~/devrev/, include the WORK config
+# If the repo is anywhere under ~/flare/, include the WORK config
 [includeIf "gitdir:~/flare/"]
     path = ~/.gitconfig-work
 

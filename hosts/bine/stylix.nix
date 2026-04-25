@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   pkgs,
   ...
 }: {
@@ -52,5 +53,7 @@
       terminal = 0.9;
       popups = 0.9;
     };
+
+    targets.qt.platform = lib.mkForce "qtct";
   };
 }
