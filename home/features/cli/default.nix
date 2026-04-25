@@ -9,6 +9,7 @@
     ./starship.nix
     ./ai.nix
     ./direnv.nix
+    ./atuin.nix
   ];
 
   home.packages = with pkgs; [

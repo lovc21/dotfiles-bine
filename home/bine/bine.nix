@@ -23,6 +23,7 @@
     starship.enable = true;
     ai.enable = true;
     direnv.enable = true;
+    atuin.enable = true;
   };
   
   # Enable git config
