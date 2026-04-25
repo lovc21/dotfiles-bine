@@ -23,6 +23,7 @@ in {
           "waybar"
           "hyprpaper"
           "hypridle"
+          "nm-applet --indicator"
           "wl-paste -p -t text --watch clipman store -P --histpath=\"~/.local/share/clipman-primary.json\""
         ];
 
@@ -120,6 +121,7 @@ in {
           "$mainMod, t, exec, ghostty"
           "$mainMod, o, exec, nautilus"
           "$mainMod, b, exec, firefox"
+          "$mainMod, N, exec, networkmanager_dmenu"
           "$mainMod, Escape, exec, wlogout -p layer-shell"
           "$mainMod, q, killactive"
           "$mainMod, M, exit"

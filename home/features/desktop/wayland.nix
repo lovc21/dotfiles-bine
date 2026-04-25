@@ -303,7 +303,7 @@ in {
               LOC=$(curl -s https://ipinfo.io/json)
               CITY=$(echo $LOC | jq -r '.city')
               COUNTRY=$(echo $LOC | jq -r '.country')
-              curl -s "https://wttr.in/$CITY?format=%C,+%t,+$CITY+$COUNTRY" | sed 's/+//'
+              curl -s "https://wttr.in/$CITY?format=%c+%C,+%t,+$CITY+$COUNTRY" | sed 's/+//'
             '';
             return-type = "";
           };
@@ -378,7 +378,7 @@ in {
             tooltip-format-wifi = "{essid} ({signalStrength}%)\n{ipaddr}\n {bandwidthDownBits}   {bandwidthUpBits}";
             tooltip-format-ethernet = "{ifname}\n{ipaddr}\n {bandwidthDownBits}   {bandwidthUpBits}";
             interval = 5;
-            on-click-right = "nm-connection-editor";
+            on-click-right = "networkmanager_dmenu";
           };
 
           pulseaudio = {
@@ -466,6 +466,7 @@ in {
       
       # Network
       networkmanagerapplet
+      networkmanager_dmenu
       
       # File manager
       nautilus
@@ -491,5 +492,10 @@ in {
         urgency_critical.timeout = 0;
       };
     };
+
+    xdg.configFile."networkmanager-dmenu/config.ini".text = ''
+      [dmenu]
+      dmenu_command = wofi --dmenu --prompt "Wi-Fi"
+    '';
   };
 }
