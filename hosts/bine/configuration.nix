@@ -11,6 +11,7 @@
       ./desktop-system.nix
       ./locale.nix
       ./specialisations.nix
+      ./stylix.nix
     ];
   
   # Configure the automatic mounting of external
@@ -85,7 +86,6 @@
 
   # Wayland environment variables
   environment.sessionVariables = {
-  QT_QPA_PLATFORMTHEME = "gtk3";
   NIXOS_OZONE_WL = "1";
   GDK_BACKEND = "wayland,x11";
   QT_QPA_PLATFORM = "wayland;xcb";

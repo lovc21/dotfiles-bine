@@ -8,10 +8,7 @@ in {
   config = lib.mkIf cfg.enable {
     programs.bat = {
       enable = true;
-      config = {
-        theme = "TwoDark";
-        pager = "less -FR";
-      };
+      config.pager = "less -FR";
     };
   };
 }

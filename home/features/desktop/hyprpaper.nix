@@ -12,6 +12,11 @@ in {
   };
 
   config = mkIf cfg.enable {
+    # Stylix also targets hyprpaper — we manage the config ourselves here,
+    # so let Stylix handle the base16 colors in other apps only.
+    # mkForce beats the default `true` set by stylix's hyprland module.
+    stylix.targets.hyprpaper.enable = mkForce false;
+
     home.packages = with pkgs; [
       hyprpaper
     ];

@@ -64,13 +64,10 @@ in {
           sensitivity = 0;
         };
 
-        # Tokyo Night color scheme
         general = {
           gaps_in = 5;
           gaps_out = 10;
           border_size = 2;
-          "col.active_border" = "rgba(7aa2f7ee) rgba(bb9af7ee) 45deg";
-          "col.inactive_border" = "rgba(414868aa)";
           layout = "dwindle";
         };
         
@@ -90,7 +87,6 @@ in {
             offset = "1 2";
             render_power = 3;
             scale = 0.97;
-            color = "rgba(1a1b2666)";
           };
         };
                 

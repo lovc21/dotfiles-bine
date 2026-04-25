@@ -50,21 +50,15 @@
     useGui = true;
   };
 
-  # Set Tokyo Night as default theme
+  # Theming (gtk, qt, cursor, dark mode) is handled by Stylix —
+  # see hosts/bine/stylix.nix. Papirus icon theme is not a Stylix target
+  # so we set it explicitly.
   gtk = {
     enable = true;
-    gtk4.theme = config.gtk.theme;
-    theme = {
-      name = "Tokyonight-Dark";
-      package = pkgs.tokyonight-gtk-theme;
-    };
+    gtk4.theme = null;
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
-    };
-    cursorTheme = {
-      name = "Bibata-Modern-Ice";
-      package = pkgs.bibata-cursors;
     };
   };
 
@@ -72,13 +66,6 @@
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
     };
-  };
-
-  # Enable Qt
-  qt = {
-    enable = true;
-    platformTheme.name = "gtk";
-    style.name = "gtk2";
   };
 
   home.packages = with pkgs; [

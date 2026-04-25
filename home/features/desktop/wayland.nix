@@ -434,60 +434,6 @@ in {
         image_size = 32;
         gtk_dark = true;
       };
-      style = ''
-        window {
-            margin: 0px;
-            border: 2px solid #7aa2f7;
-            border-radius: 15px;
-            background-color: #1a1b26;
-            font-family: "JetBrainsMono Nerd Font";
-            font-size: 14px;
-        }
-
-        #input {
-            margin: 5px;
-            border: none;
-            border-radius: 10px;
-            color: #c0caf5;
-            background-color: #24283b;
-        }
-
-        #inner-box {
-            margin: 5px;
-            border: none;
-            background-color: transparent;
-        }
-
-        #outer-box {
-            margin: 5px;
-            border: none;
-            background-color: transparent;
-        }
-
-        #scroll {
-            margin: 0px;
-            border: none;
-        }
-
-        #text {
-            margin: 5px;
-            border: none;
-            color: #c0caf5;
-        }
-
-        #entry {
-            border-radius: 10px;
-        }
-
-        #entry:selected {
-            background-color: #7aa2f7;
-            color: #1a1b26;
-        }
-
-        #entry:selected #text {
-            color: #1a1b26;
-        }
-      '';
     };
 
     home.packages = with pkgs; [
@@ -537,32 +483,12 @@ in {
           offset = "30x50";
           origin = "top-right";
           transparency = 10;
-          font = "JetBrainsMono Nerd Font 11";
-          frame_color = "#7aa2f7";
-          separator_color = "frame";
           corner_radius = 10;
-          background = "#1a1b26";
-          foreground = "#c0caf5";
           timeout = 5;
         };
-        urgency_low = {
-          background = "#1a1b26";
-          foreground = "#c0caf5";
-          frame_color = "#9ece6a";
-          timeout = 3;
-        };
-        urgency_normal = {
-          background = "#1a1b26";
-          foreground = "#c0caf5";
-          frame_color = "#7aa2f7";
-          timeout = 5;
-        };
-        urgency_critical = {
-          background = "#1a1b26";
-          foreground = "#c0caf5";
-          frame_color = "#f7768e";
-          timeout = 0;
-        };
+        urgency_low.timeout = 3;
+        urgency_normal.timeout = 5;
+        urgency_critical.timeout = 0;
       };
     };
   };
