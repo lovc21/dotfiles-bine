@@ -2,8 +2,14 @@
   # X11 & GDM
   services.xserver.enable = true;
   services.xserver.xkb = { layout = "us"; variant = ""; };
+  services.xserver.excludePackages = [ pkgs.xterm ];
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-console
+    gnome-music
+    decibels
+  ];
 
   # Hyprland (System Level)
   programs.hyprland = {

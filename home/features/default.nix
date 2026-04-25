@@ -6,5 +6,10 @@
     ./editor
     ./desktop
     ./vpn
+    ./devops
+    ./programming
+    ./llms
+    ./browsers
+    ./music
   ];
 }

@@ -9,10 +9,10 @@
   home.username = lib.mkDefault "bine";
   home.homeDirectory = lib.mkDefault "/home/${config.home.username}";
   home.stateVersion = "25.11";
-  
-  programs.home-manager.enable = true;
 
-  # Enable CLI
+  programs.home-manager.enable = true;
+  
+  # features enable/disable here
   features.cli = {
     zsh.enable = true;
     fzf.enable = true;
@@ -24,18 +24,25 @@
     ai.enable = true;
     direnv.enable = true;
     atuin.enable = true;
+    tools.enable = true;
   };
-  
-  # Enable git config
+
   features.git.enable = true;
 
-  # Enable terminal ghossty
-  features.terminal.ghostty.enable = true;
+  features.terminal = {
+    ghostty.enable = true;
+    alacritty.enable = true;
+    xterm.enable = false;
+    gnome-console.enable = false;
+  };
 
-  # Enable nvim
-  features.editor.neovim.enable = true;
+  features.llms.ollama.enable = true;
 
-  # Enable desktop
+  features.editor = {
+    neovim.enable = true;
+    vscode.enable = true;
+  };
+
   features.desktop = {
     fonts.enable = true;
     hyprland.enable = true;
@@ -43,17 +50,45 @@
     hyprpaper.enable = true;
     hyprlock.enable = true;
     hypridle.enable = true;
+    communication.enable = true;
   };
 
-  # Enable VPN
+  features.browsers = {
+    firefox.enable = true;
+    chromium.enable = true;
+    google-chrome.enable = true;
+    brave.enable = true;
+  };
+
+  features.music = {
+    spotify.enable = true;
+    gnome-music.enable = true;
+    decibels.enable = true;
+  };
+
+  features.devops = {
+    terraform.enable = true;
+    kubernetes.enable = true;
+    docker.enable = true;
+    cloud.enable = true;
+    hashicorp.enable = true;
+    security.enable = true;
+  };
+
+  features.programming = {
+    go.enable = true;
+    python.enable = true;
+    rust.enable = true;
+    zig.enable = true;
+    nodejs.enable = true;
+  };
+
   features.vpn.protonvpn = {
     enable = true;
     useGui = true;
   };
 
-  # Theming (gtk, qt, cursor, dark mode) is handled by Stylix —
-  # see hosts/bine/stylix.nix. Papirus icon theme is not a Stylix target
-  # so we set it explicitly.
+  # GTK theme and icon theme
   gtk = {
     enable = true;
     gtk4.theme = null;
@@ -62,146 +97,16 @@
       package = pkgs.papirus-icon-theme;
     };
   };
-
+  
+  # GTK settings
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
     };
   };
 
+  # random packages go here
   home.packages = with pkgs; [
-  
-    # === TERMINALS ===
-    alacritty
-    
-    # === SHELL ===
-    starship
-    
-    # === CORE CLI UTILITIES ===
-    jq
-    yq-go
-    bottom
-    fastfetch
-    duf
-    dust
-    sd
-    ripgrep-all
-
-    # === DEVOPS & INFRASTRUCTURE ===
-    terraform
-    terraform-ls
-    tflint
-    
-    # Kubernetes tools
-    kubectl
-    kubectx
-    k9s
-    helm
-    argocd
-    
-    # Docker tools
-    docker-compose
-    lazydocker
-    lazygit
-    dive
-    
-    # Cloud tools
-    (google-cloud-sdk.withExtraComponents (
-      with google-cloud-sdk.components;
-      [
-        gke-gcloud-auth-plugin
-      ]
-    ))
-    awscli2
-    
-    # HashiCorp stuff
-    packer
-    vault
-    ansible
-    
-    # === PROGRAMMING LANGUAGES ===
-    # Go
-    go
-    gopls
-    golangci-lint
-    delve
-    
-    # Python
-    pipx
-    python312
-    python312Packages.pip
-    pyright
-    ruff
-    
-    # Zig
-    zig
-    
-    # Rust
-    rustc
-    cargo
-    rust-analyzer
-    
-    # Node.js
-    nodejs_22
-    prettier
-    typescript-language-server
-    
-    # === MONITORING & DEBUGGING ===
-    htop
-    iotop
-    nethogs
-    nmap
-    tcpdump
-    wireshark
-    dig
-    
-    # === FILE MANAGEMENT ===
-    yazi
-    ranger
-    unzip
-    zip
-    just
-
-    # === THEMES ===  
-    tokyonight-gtk-theme
-    papirus-icon-theme
-    # tela-circle-icon-theme
-    bibata-cursors
-      
-    # === BROWSERS ===
-    chromium
-    google-chrome
-    brave
-    firefox
-
-    # === COMMUNICATION ===
-    slack
-    discord
-    
-    # === MUSIC ===
-    spotify
-
-    # === SECURITY ===
-    grype
-    trivy
-    age
-    sops
-
-    # === UTILITIES ===
-    rsync
-    rclone
-    tldr
-    xclip
-    tokei
-    hyperfine
-    glow
-    slides
-    ollama
-
-    # === EDITORS ===
-    vscode
-
-    # === MISC ===
     gnome-tweaks
     dconf-editor
   ];

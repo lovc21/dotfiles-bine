@@ -7,6 +7,7 @@
     ./hyprlock.nix
     ./hypridle.nix
     ./stylix-overrides.nix
+    ./communication.nix
   ];
 
   home.packages = with pkgs; [

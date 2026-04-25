@@ -10,6 +10,7 @@
     ./ai.nix
     ./direnv.nix
     ./atuin.nix
+    ./tools.nix
   ];
 
   home.packages = with pkgs; [

@@ -13,7 +13,8 @@ in
       delta
       gh
       glab
-      
+      lazygit
+
       # YubiKey support
       yubikey-manager
       yubikey-personalization
