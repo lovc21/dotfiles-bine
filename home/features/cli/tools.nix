@@ -28,6 +28,8 @@ in {
       rclone
       yazi
       ranger
+      mpv
+      radeontop
     ];
   };
 }

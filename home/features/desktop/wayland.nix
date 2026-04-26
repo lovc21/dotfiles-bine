@@ -255,6 +255,7 @@ in {
 
           "hyprland/window" = {
             format = "  {}";
+            format-empty = "";
             separate-outputs = true;
             max-length = 30;
           };
@@ -310,14 +311,14 @@ in {
 
           cpu = {
             interval = 5;
-            format = "  {usage}%";
+            format = " {usage}%";
             max-length = 10;
             on-click = "ghostty -e htop";
           };
 
           memory = {
             interval = 10;
-            format = "  {percentage}%";
+            format = " {percentage}%";
             format-alt = "  {used:0.1f}G / {total:0.1f}G";
             max-length = 15;
             on-click = "ghostty -e htop";
