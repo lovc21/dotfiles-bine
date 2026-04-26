@@ -5,5 +5,6 @@
     ./rust.nix
     ./zig.nix
     ./nodejs.nix
+    ./latex.nix
   ];
 }

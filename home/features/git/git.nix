@@ -14,10 +14,12 @@ in
       gh
       glab
       lazygit
+      diffuse
 
       # YubiKey support
       yubikey-manager
       yubikey-personalization
+      yubikey-agent
     ];
     
     # Symlink git configs

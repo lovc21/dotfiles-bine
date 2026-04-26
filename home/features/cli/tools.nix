@@ -30,6 +30,10 @@ in {
       ranger
       mpv
       radeontop
+      cloc
+      gping
+      whois
+      bitwise
     ];
   };
 }

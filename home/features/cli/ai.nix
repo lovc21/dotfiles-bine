@@ -9,6 +9,7 @@ in {
     home.packages = with pkgs; [
       gemini-cli
       claude-code
+      code2prompt
     ];
 
   };

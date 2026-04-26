@@ -10,6 +10,7 @@ in {
       nodejs_22
       prettier
       typescript-language-server
+      pnpm
     ];
   };
 }

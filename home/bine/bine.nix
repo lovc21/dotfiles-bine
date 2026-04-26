@@ -81,11 +81,17 @@
     rust.enable = true;
     zig.enable = true;
     nodejs.enable = true;
+    latex.enable = true;
   };
 
   features.vpn.protonvpn = {
     enable = true;
     useGui = true;
+  };
+
+  features.research = {
+    zotero.enable = true;
+    xournalpp.enable = true;
   };
 
   # GTK theme and icon theme

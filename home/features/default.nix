@@ -11,5 +11,6 @@
     ./llms
     ./browsers
     ./music
+    ./research
   ];
 }
