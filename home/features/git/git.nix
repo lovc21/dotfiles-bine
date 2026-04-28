@@ -15,6 +15,7 @@ in
       glab
       lazygit
       diffuse
+      netcat
 
       # YubiKey support
       yubikey-manager
@@ -52,6 +53,24 @@ in
         # YubiKey support
         enable-ssh-support
       '';
+    };
+
+    programs.ssh = {
+      enable = true;
+      matchBlocks = {
+        "github.com" = {
+          user = "git";
+          identityFile = "~/.ssh/id_ed25519_sk_rk";
+          identitiesOnly = true;
+          proxyCommand = "sh -c 'nc -w 3 -z github.com 22 >/dev/null 2>&1 && exec nc %h 22 || exec nc ssh.github.com 443'";
+        };
+        "gist.github.com" = {
+          user = "git";
+          identityFile = "~/.ssh/id_ed25519_sk_rk";
+          identitiesOnly = true;
+          proxyCommand = "sh -c 'nc -w 3 -z github.com 22 >/dev/null 2>&1 && exec nc %h 22 || exec nc ssh.github.com 443'";
+        };
+      };
     };
   };
 }
