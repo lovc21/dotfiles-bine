@@ -232,12 +232,11 @@ in {
         mainbar = {
           layer = "top";
           position = "top";
-          mod = "dock";
+          mode = "dock";
           exclusive = true;
           passthrough = false;
           gtk-layer-shell = true;
-          height = 0;
-          # --- FIXED: Moved clock to center, fixed weather position ---
+          height = 30;
           modules-left = ["custom/weather" "hyprland/workspaces" "hyprland/window"];
           modules-center = ["clock"];
           modules-right = [
