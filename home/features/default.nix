@@ -12,5 +12,6 @@
     ./browsers
     ./music
     ./research
+    ./chess
   ];
 }

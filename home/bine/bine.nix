@@ -94,6 +94,8 @@
     xournalpp.enable = true;
   };
 
+  features.chess.enable = true;
+
   # GTK theme and icon theme
   gtk = {
     enable = true;
