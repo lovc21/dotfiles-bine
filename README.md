@@ -5,6 +5,10 @@
         <img src="https://img.shields.io/badge/NixOS-26.05%20Yarara-informational.svg?style=for-the-badge&logo=nixos&color=bb9af7&logoColor=c0caf5&labelColor=1a1b26"></a>
     <a href="https://github.com/ryan4yin/nixos-and-flakes-book">
         <img src="https://img.shields.io/badge/Nix%20Flakes-learning-informational.svg?style=for-the-badge&logo=nixos&color=9ece6a&logoColor=c0caf5&labelColor=1a1b26"></a>
+    <a href="https://github.com/lovc21/dotfiles-bine/actions/workflows/test-flake.yml">
+        <img src="https://img.shields.io/github/actions/workflow/status/lovc21/dotfiles-bine/test-flake.yml?style=for-the-badge&logo=githubactions&color=7aa2f7&logoColor=c0caf5&labelColor=1a1b26&label=flake%20check"></a>
+    <a href="https://lovc21.cachix.org">
+        <img src="https://img.shields.io/badge/cachix-lovc21-informational.svg?style=for-the-badge&logo=nixos&color=f7768e&logoColor=c0caf5&labelColor=1a1b26"></a>
 </p>
 
 ---
