@@ -64,7 +64,7 @@
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
-        "lovc21.cachix.org-1:FqL6/QSIX2oxeuZA1MfwDEHsYpiN/4J/t0SaiOpUKjg="
+        "lovc21.cachix.org-1:RDw/B/PYK6/d7Vwr6Bu4il5w5XhPlCrflMvsTIgHQEI="
       ];
     };
     # Configure automatic garbage collection for NixOS state;
