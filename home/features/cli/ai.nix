@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 let
   cfg = config.features.cli.ai;
@@ -9,7 +9,9 @@ in {
     home.packages = with pkgs; [
       gemini-cli
       claude-code
+      opencode
       code2prompt
+      inputs.llmfit.packages.${pkgs.system}.default
     ];
 
   };

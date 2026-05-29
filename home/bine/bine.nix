@@ -29,14 +29,19 @@
 
   features.git.enable = true;
 
+  features.llms.ollama = {
+    enable = true;
+    models = [
+      "hf.co/hesamation/Qwen3.6-35B-A3B-Claude-4.6-Opus-Reasoning-Distilled-GGUF:Q5_K_M"
+    ];
+  };
+
   features.terminal = {
     ghostty.enable = true;
     alacritty.enable = true;
     xterm.enable = false;
     gnome-console.enable = false;
   };
-
-  features.llms.ollama.enable = true;
 
   features.editor = {
     neovim.enable = true;

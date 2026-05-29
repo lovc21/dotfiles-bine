@@ -26,6 +26,11 @@
       url = "git+https://github.com/lovc21/dotfiles-bine.git";
       flake = false;
     };
+
+    llmfit = {
+      url = "github:AlexsJones/llmfit";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
