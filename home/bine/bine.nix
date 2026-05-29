@@ -32,7 +32,7 @@
   features.llms.ollama = {
     enable = true;
     models = [
-      "hf.co/hesamation/Qwen3.6-35B-A3B-Claude-4.6-Opus-Reasoning-Distilled-GGUF:Q5_K_M"
+      "qwen3-coder:30b"
     ];
   };
 

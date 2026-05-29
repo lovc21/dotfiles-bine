@@ -28,9 +28,12 @@ in {
         Description = "Pull configured Ollama models";
         After = [ "ollama.service" ];
         Requires = [ "ollama.service" ];
+        X-RestartIfChanged = false;
+        X-StopIfChanged = false;
       };
       Service = {
         Type = "oneshot";
+        TimeoutStartSec = "infinity";
         ExecStart = pkgs.writeShellScript "ollama-pull-models" ''
           set -eu
           for model in ${lib.escapeShellArgs cfg.models}; do
