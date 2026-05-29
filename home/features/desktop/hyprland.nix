@@ -108,7 +108,6 @@ in {
         };
 
         dwindle = {
-          pseudotile = true;
           preserve_split = true;
         };
 
@@ -129,7 +128,7 @@ in {
           "$mainMod, V, togglefloating"
           "$mainMod, Space, togglefloating"
           "$mainMod, P, pseudo"
-          "$mainMod, J, togglesplit"
+          "$mainMod, J, layoutmsg, togglesplit"
           "$mainMod, D, exec, wofi --show drun --allow-images"
           "$mainMod, R, exec, wofi --show run"
           ", Print, exec, grim -g \"$(slurp)\" - | wl-copy"
