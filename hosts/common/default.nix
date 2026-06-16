@@ -46,6 +46,7 @@
   nix = {
     settings = {
       experimental-features = "nix-command flakes";
+      accept-flake-config = false;
       # Auto-optimize when building
       auto-optimise-store = true;
       trusted-users = [
