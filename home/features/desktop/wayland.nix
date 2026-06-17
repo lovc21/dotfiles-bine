@@ -459,7 +459,7 @@ in {
       
       # Qt Wayland support
       qt6.qtwayland
-      libsForQt5.qt5.qtwayland
+      qt5.qtwayland
       
       # Audio
       pavucontrol
