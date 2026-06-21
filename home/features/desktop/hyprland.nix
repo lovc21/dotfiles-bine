@@ -28,9 +28,7 @@ in {
         ];
 
         env = [
-          "XCURSOR_SIZE,32"
           "GTK_THEME,Tokyonight-Dark"
-          "XCURSOR_THEME,Bibata-Modern-Ice"
         ];
 
         gesture = [
