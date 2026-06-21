@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, ... }:
 {
   specialisation = {
     "BatterySaver".configuration = {
@@ -10,7 +10,7 @@
       # Disable high-drain hardware/services
       hardware.bluetooth.enable = lib.mkForce false;
       programs.steam.enable = lib.mkForce false;
-      
+
       systemd.services.dim-screen = {
         description = "Dim screen for battery saving";
         after = [ "graphical.target" ];

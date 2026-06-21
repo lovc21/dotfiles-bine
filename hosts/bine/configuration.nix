@@ -1,27 +1,27 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
 
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./steam.nix
-      ./boot.nix
-      ./hardware-extra.nix
-      ./desktop-system.nix
-      ./locale.nix
-      ./specialisations.nix
-      ./stylix.nix
-    ];
-  
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./steam.nix
+    ./boot.nix
+    ./hardware-extra.nix
+    ./desktop-system.nix
+    ./locale.nix
+    ./specialisations.nix
+    ./stylix.nix
+  ];
+
   # Configure the automatic mounting of external
   # USB drives; note that they are mounted according
   # to the user that is active, meaning that it can
   # be the lightdm user when the system is booting
   # or, otherwise, the user that is logged in
   services.devmon.enable = true;
-  services.gvfs.enable = true;  
-  
+  services.gvfs.enable = true;
+
   networking.hostName = "bine"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -56,7 +56,6 @@
     # pinentryPackage = pkgs.pinentry-gnome3;
   };
 
-
   # Enable nix-ld so that it is possible
   # to install pre-compiled binaries that
   # that expect libraries to be in standard FHS
@@ -68,28 +67,27 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim               
-    pciutils          # system hardware diagnostics
-    usbutils          # system hardware diagnostics
-    lm_sensors        # system temperature monitoring
-    killall           # basic system tool
-    file              # basic system tool
-    wirelesstools     # system networking
-    iw                # system networking
-    nix-tree          # NixOS tooling
-    nix-index         # NixOS tooling
-    nixos-option      # NixOS tooling
-    powertop          # system power management
-    acpi              # system power info
+    vim
+    pciutils # system hardware diagnostics
+    usbutils # system hardware diagnostics
+    lm_sensors # system temperature monitoring
+    killall # basic system tool
+    file # basic system tool
+    wirelesstools # system networking
+    iw # system networking
+    nix-tree # NixOS tooling
+    nix-index # NixOS tooling
+    nixos-option # NixOS tooling
+    powertop # system power management
+    acpi # system power info
   ];
-
 
   # Wayland environment variables
   environment.sessionVariables = {
-  NIXOS_OZONE_WL = "1";
-  GDK_BACKEND = "wayland,x11";
-  QT_QPA_PLATFORM = "wayland;xcb";
-  MOZ_ENABLE_WAYLAND = "1";
+    NIXOS_OZONE_WL = "1";
+    GDK_BACKEND = "wayland,x11";
+    QT_QPA_PLATFORM = "wayland;xcb";
+    MOZ_ENABLE_WAYLAND = "1";
   };
 
   programs.dconf.enable = true;

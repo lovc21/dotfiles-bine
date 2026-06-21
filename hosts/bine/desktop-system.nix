@@ -1,7 +1,10 @@
 { pkgs, ... }: {
   # X11 & GDM
   services.xserver.enable = true;
-  services.xserver.xkb = { layout = "us"; variant = ""; };
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+  };
   services.xserver.excludePackages = [ pkgs.xterm ];
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
@@ -45,9 +48,18 @@
     ];
 
     fontconfig.defaultFonts = {
-      serif = [ "Source Han Serif SC" "Noto Color Emoji" ];
-      sansSerif = [ "Source Han Sans SC" "Noto Color Emoji" ];
-      monospace = [ "JetBrainsMono Nerd Font" "Noto Color Emoji" ];
+      serif = [
+        "Source Han Serif SC"
+        "Noto Color Emoji"
+      ];
+      sansSerif = [
+        "Source Han Sans SC"
+        "Noto Color Emoji"
+      ];
+      monospace = [
+        "JetBrainsMono Nerd Font"
+        "Noto Color Emoji"
+      ];
       emoji = [ "Noto Color Emoji" ];
     };
   };
@@ -60,6 +72,3 @@
     GSM_SKIP_SSH_AGENT_WORKAROUND = "1";
   };
 }
-
-
-

@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   imports = [
     ./fonts.nix
     ./hyprland.nix
@@ -13,4 +13,3 @@
   home.packages = with pkgs; [
   ];
 }
-

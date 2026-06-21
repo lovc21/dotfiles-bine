@@ -17,6 +17,17 @@ test:
 check:
     nix flake check --show-trace
 
+# Format every nix file (nixfmt + deadnix + statix)
+[group('format')]
+fmt:
+    nix fmt
+
+# Install the pre-commit hook that formats staged files (run once per clone)
+[group('format')]
+hooks:
+    git config core.hooksPath .githooks
+    @echo "pre-commit hook enabled (core.hooksPath=.githooks)"
+
 # Build and switch to new configuration
 [group('nixos-test')]
 deploy:

@@ -1,8 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.devops.docker;
-in {
+in
+{
   options.features.devops.docker.enable = lib.mkEnableOption "docker tooling";
 
   config = lib.mkIf cfg.enable {

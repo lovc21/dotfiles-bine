@@ -1,8 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 let
   cfg = config.features.cli.direnv;
-in {
+in
+{
   options.features.cli.direnv.enable = lib.mkEnableOption "direnv with nix-direnv";
 
   config = lib.mkIf cfg.enable {

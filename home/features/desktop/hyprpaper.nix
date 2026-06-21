@@ -4,9 +4,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.features.desktop.hyprpaper;
-in {
+in
+{
   options.features.desktop.hyprpaper = {
     enable = mkEnableOption "hyprpaper wallpaper daemon";
   };
@@ -23,17 +25,19 @@ in {
 
     home.file."Pictures/wallpapers/.keep".text = "";
 
-    xdg.configFile."hypr/hyprpaper.conf".text = let
-      wp = "${config.home.homeDirectory}/Pictures/wallpapers/b-180.jpg";
-    in ''
-      splash = false
-      ipc = on
+    xdg.configFile."hypr/hyprpaper.conf".text =
+      let
+        wp = "${config.home.homeDirectory}/Pictures/wallpapers/b-180.jpg";
+      in
+      ''
+        splash = false
+        ipc = on
 
-      wallpaper {
-          monitor = *
-          path = ${wp}
-          fit_mode = cover
-      }
-    '';
+        wallpaper {
+            monitor = *
+            path = ${wp}
+            fit_mode = cover
+        }
+      '';
   };
 }

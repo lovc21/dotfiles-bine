@@ -1,3 +1,3 @@
 {
-  imports = [./bine.nix];
+  imports = [ ./bine.nix ];
 }

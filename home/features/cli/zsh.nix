@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.cli.zsh;
@@ -136,7 +141,7 @@ in
             command terraform "$@"
           fi
         } 
-        
+
         alias terraform='tf'
 
       '';
@@ -155,7 +160,6 @@ in
         }
       ];
     };
-
 
   };
 }

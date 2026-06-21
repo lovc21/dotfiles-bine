@@ -1,8 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.devops.kubernetes;
-in {
+in
+{
   options.features.devops.kubernetes.enable = lib.mkEnableOption "kubernetes tooling";
 
   config = lib.mkIf cfg.enable {

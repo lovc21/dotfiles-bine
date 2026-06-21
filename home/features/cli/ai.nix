@@ -1,8 +1,15 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 let
   cfg = config.features.cli.ai;
-in {
+in
+{
   options.features.cli.ai.enable = lib.mkEnableOption "AI CLI tools (Claude & Gemini)";
 
   config = lib.mkIf cfg.enable {

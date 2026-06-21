@@ -1,8 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.devops.terraform;
-in {
+in
+{
   options.features.devops.terraform.enable = lib.mkEnableOption "terraform tooling";
 
   config = lib.mkIf cfg.enable {

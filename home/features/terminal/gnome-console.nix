@@ -1,8 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.terminal.gnome-console;
-in {
+in
+{
   options.features.terminal.gnome-console.enable = lib.mkEnableOption "GNOME Console (Kgx)";
 
   config = lib.mkIf cfg.enable {

@@ -3,7 +3,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   users.users.bine = {
     isNormalUser = true;
     description = "jakob";
@@ -18,9 +19,8 @@
       inputs.home-manager.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
-  
+
   # This imports home/bine/${hostname}.nix
   # Since your hostname is "bine", it imports home/bine/bine.nix
-  home-manager.users.bine =
-    import ../../../home/bine/${config.networking.hostName}.nix;
+  home-manager.users.bine = import ../../../home/bine/${config.networking.hostName}.nix;
 }

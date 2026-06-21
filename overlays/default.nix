@@ -5,9 +5,11 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   # https://nixos.wiki/wiki/Overlays
-  modifications = final: prev: {
+  modifications = _final: prev: {
     # TODO: remove once nixpkgs pipx test failures are fixed upstream (whitespace handling in PEP 508 `pkg @ url` specs).
-    pipx = prev.pipx.overridePythonAttrs (_: { doCheck = false; });
+    pipx = prev.pipx.overridePythonAttrs (_: {
+      doCheck = false;
+    });
 
     # TODO: remove once nixpkgs catches up; pins ahead of nixpkgs for newest models.
     claude-code = prev.claude-code.overrideAttrs (_: rec {
@@ -26,4 +28,3 @@
     };
   };
 }
-

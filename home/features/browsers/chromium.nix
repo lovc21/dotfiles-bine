@@ -1,8 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.browsers.chromium;
-in {
+in
+{
   options.features.browsers.chromium.enable = lib.mkEnableOption "Chromium";
 
   config = lib.mkIf cfg.enable {

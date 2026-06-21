@@ -1,8 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.programming.python;
-in {
+in
+{
   options.features.programming.python.enable = lib.mkEnableOption "Python toolchain";
 
   config = lib.mkIf cfg.enable {

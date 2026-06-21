@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+mapfile -t files < <(git diff --cached --name-only --diff-filter=ACM -- '*.nix')
+[ ${#files[@]} -eq 0 ] && exit 0
+
+echo "treefmt: checking ${#files[@]} staged nix file(s)…"
+if ! nix fmt -- --fail-on-change "${files[@]}"; then
+  echo
+  echo "✗ treefmt reformatted staged files. Review the changes, then run:"
+  echo "    git add ${files[*]}"
+  echo "  and commit again."
+  exit 1
+fi

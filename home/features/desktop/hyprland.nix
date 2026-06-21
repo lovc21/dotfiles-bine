@@ -4,9 +4,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.features.desktop.hyprland;
-in {
+in
+{
   options.features.desktop.hyprland.enable = mkEnableOption "hyprland config";
 
   config = mkIf cfg.enable {
@@ -36,17 +38,17 @@ in {
         ];
 
         monitor = [
-        # Laptop - 2880x1920 @ 120Hz, scale 2 (left)
-        "eDP-1, 2880x1920@120, 0x0, 2"
-        
-        # Dell 4K - 3840x2160 @ 60Hz (center, to the right of laptop)
-        "DP-1, 3840x2160@60, 1440x0, 1"
-        
-        # Dell 1080p - rotated left (portrait), to the right of 4K
-        "DP-2, 1920x1080@60, 5280x0, 1, transform, 3"
-        
-        ", preferred, auto, 1"
-       ];
+          # Laptop - 2880x1920 @ 120Hz, scale 2 (left)
+          "eDP-1, 2880x1920@120, 0x0, 2"
+
+          # Dell 4K - 3840x2160 @ 60Hz (center, to the right of laptop)
+          "DP-1, 3840x2160@60, 1440x0, 1"
+
+          # Dell 1080p - rotated left (portrait), to the right of 4K
+          "DP-2, 1920x1080@60, 5280x0, 1, transform, 3"
+
+          ", preferred, auto, 1"
+        ];
 
         input = {
           kb_layout = "us,si";
@@ -69,7 +71,7 @@ in {
           border_size = 2;
           layout = "dwindle";
         };
-        
+
         decoration = {
           rounding = 10;
           blur = {
@@ -88,7 +90,7 @@ in {
             scale = 0.97;
           };
         };
-                
+
         animations = {
           enabled = true;
           bezier = [
@@ -109,8 +111,8 @@ in {
           preserve_split = true;
         };
 
-        master = {};
-         
+        master = { };
+
         "$mainMod" = "SUPER";
 
         bind = [
@@ -229,7 +231,7 @@ in {
           "match:title ^(Picture-in-Picture)$, move 75% 75%"
           "match:title ^(Picture-in-Picture)$, size 25% 25%"
         ];
-        
+
         workspace = [
           "1, monitor:eDP-1, default:true"
           "2, monitor:DP-1, default:true"

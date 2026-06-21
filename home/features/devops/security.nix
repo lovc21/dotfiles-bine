@@ -1,8 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.devops.security;
-in {
+in
+{
   options.features.devops.security.enable = lib.mkEnableOption "security scanning tooling";
 
   config = lib.mkIf cfg.enable {

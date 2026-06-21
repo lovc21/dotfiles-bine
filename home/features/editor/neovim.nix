@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.editor.neovim;
@@ -12,17 +17,17 @@ in
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/jakob-stuff/dotfiles-bine/nvim";
       recursive = true;
     };
-    
+
     # Install neovim and all required packages
     home.packages = with pkgs; [
       # Neovim
       neovim
-      
+
       # Programming languages (needed for Mason to build LSPs)
       go
       cargo
       rustc
-      
+
       # LSP servers (pre-installed, Mason can skip these)
       lua-language-server
       pyright
@@ -30,19 +35,19 @@ in
       gopls
       bash-language-server
       terraform-ls
-      vscode-langservers-extracted  # html, css, json
+      vscode-langservers-extracted # html, css, json
       tailwindcss-language-server
-      zls  # Zig LSP
-      
+      zls # Zig LSP
+
       # Formatters
       stylua
       black
       prettierd
       shfmt
-      
+
       # Linters
       shellcheck
-      
+
       # Tools
       ripgrep
       fd
@@ -51,7 +56,7 @@ in
       tree-sitter
       gcc
       lazygit
-      
+
       # Mason dependencies
       unzip
       curl
@@ -61,15 +66,15 @@ in
       gnumake
       cmake
       pkg-config
-      
+
       # Node.js for LSPs
       nodejs_22
-      
+
       # Clipboard support
       wl-clipboard
       xclip
     ];
-    
+
     # Environment variables
     home.sessionVariables = {
       EDITOR = "nvim";

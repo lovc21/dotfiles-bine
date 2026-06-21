@@ -1,8 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 let
   cfg = config.features.terminal.ghostty;
-in {
+in
+{
   options.features.terminal.ghostty.enable = lib.mkEnableOption "ghostty terminal configuration";
 
   config = lib.mkIf cfg.enable {

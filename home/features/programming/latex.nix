@@ -1,8 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.programming.latex;
-in {
+in
+{
   options.features.programming.latex.enable = lib.mkEnableOption "LaTeX toolchain";
 
   config = lib.mkIf cfg.enable {

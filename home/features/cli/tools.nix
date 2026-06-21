@@ -1,8 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.cli.tools;
-in {
+in
+{
   options.features.cli.tools.enable = lib.mkEnableOption "general CLI utilities";
 
   config = lib.mkIf cfg.enable {

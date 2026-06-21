@@ -1,10 +1,16 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
 let
   cfg = config.features.vpn.protonvpn;
-in {
+in
+{
   options.features.vpn.protonvpn = {
     enable = mkEnableOption "ProtonVPN";
     useGui = mkOption {

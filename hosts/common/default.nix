@@ -1,11 +1,12 @@
 # Common configuration for all hosts
-{ 
+{
   pkgs,
   lib,
   inputs,
   outputs,
   ...
-}: {
+}:
+{
 
   imports = [
     ./users
@@ -14,7 +15,7 @@
 
   home-manager = {
     useUserPackages = true;
-    extraSpecialArgs = {inherit inputs outputs;};
+    extraSpecialArgs = { inherit inputs outputs; };
     backupFileExtension = "backup";
   };
 
@@ -80,22 +81,21 @@
     };
     # Optimize Nix store (saves disk space)
     optimise = {
-     automatic = true;
-     dates = [ "weekly" ];
+      automatic = true;
+      dates = [ "weekly" ];
     };
-    registry =
-      (lib.mapAttrs (_: flake: {inherit flake;}))
-      ((lib.filterAttrs (_: lib.isType "flake")) inputs);
-    nixPath = ["/etc/nix/path"];
+    registry = (lib.mapAttrs (_: flake: { inherit flake; })) (
+      (lib.filterAttrs (_: lib.isType "flake")) inputs
+    );
+    nixPath = [ "/etc/nix/path" ];
   };
   # Limit boot menu entries
   boot.loader.systemd-boot.configurationLimit = 10;
 
-  # setpu zsh 
+  # setpu zsh
   users.defaultUserShell = pkgs.zsh;
 
   # Enable YubiKey support
   services.pcscd.enable = true;
   services.udev.packages = [ pkgs.yubikey-personalization ];
 }
-

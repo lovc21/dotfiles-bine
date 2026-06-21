@@ -1,8 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.research.xournalpp;
-in {
+in
+{
   options.features.research.xournalpp.enable = lib.mkEnableOption "Xournal++ PDF annotator";
 
   config = lib.mkIf cfg.enable {

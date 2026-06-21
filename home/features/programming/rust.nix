@@ -1,8 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.programming.rust;
-in {
+in
+{
   options.features.programming.rust.enable = lib.mkEnableOption "Rust toolchain";
 
   config = lib.mkIf cfg.enable {

@@ -1,8 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.music.gnome-music;
-in {
+in
+{
   options.features.music.gnome-music.enable = lib.mkEnableOption "GNOME Music";
 
   config = lib.mkIf cfg.enable {

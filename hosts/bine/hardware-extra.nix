@@ -32,7 +32,7 @@
   hardware.sensor.iio.enable = false; # Disable light sensors (save battery)
   services.pcscd.enable = true; # Smartcard
   services.udev.packages = [ pkgs.yubikey-personalization ];
-  
+
   # Power Management
   services.logind.settings.Login = {
     HandleLidSwitch = "suspend";

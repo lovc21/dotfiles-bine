@@ -4,9 +4,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.features.desktop.hypridle;
-in {
+in
+{
   options.features.desktop.hypridle.enable = mkEnableOption "hypridle idle daemon";
 
   config = mkIf cfg.enable {

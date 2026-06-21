@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.git;
@@ -22,20 +27,20 @@ in
       yubikey-personalization
       yubikey-agent
     ];
-    
+
     # Symlink git configs
     home.file.".gitconfig" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/jakob-stuff/dotfiles-bine/git-config/gitconfig";
     };
-    
+
     home.file.".gitconfig-personal" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/jakob-stuff/dotfiles-bine/git-config/gitconfig-personal";
     };
-    
+
     home.file.".gitconfig-work" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/jakob-stuff/dotfiles-bine/git-config/gitconfig-work";
     };
-    
+
     # GPG configuration for YubiKey
     programs.gpg = {
       enable = true;
@@ -44,11 +49,11 @@ in
         use-agent = true;
       };
     };
-    
+
     services.gpg-agent = {
       enable = true;
       enableSshSupport = true;
-      pinentry.package = pkgs.pinentry-curses;
+      pinentry.package = pkgs.pinentry-gnome3;
       extraConfig = ''
         # YubiKey support
         enable-ssh-support

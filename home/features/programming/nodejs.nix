@@ -1,8 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.programming.nodejs;
-in {
+in
+{
   options.features.programming.nodejs.enable = lib.mkEnableOption "Node.js toolchain";
 
   config = lib.mkIf cfg.enable {

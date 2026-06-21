@@ -2,7 +2,8 @@
 
 let
   cfg = config.features.cli.bat;
-in {
+in
+{
   options.features.cli.bat.enable = lib.mkEnableOption "bat (better cat)";
 
   config = lib.mkIf cfg.enable {

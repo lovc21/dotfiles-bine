@@ -1,8 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.music.spotify;
-in {
+in
+{
   options.features.music.spotify.enable = lib.mkEnableOption "Spotify";
 
   config = lib.mkIf cfg.enable {

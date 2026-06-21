@@ -1,8 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.terminal.xterm;
-in {
+in
+{
   options.features.terminal.xterm.enable = lib.mkEnableOption "XTerm";
 
   config = lib.mkIf cfg.enable {

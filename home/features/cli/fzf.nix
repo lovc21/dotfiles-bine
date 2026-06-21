@@ -1,8 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
 
 let
   cfg = config.features.cli.fzf;
-in {
+in
+{
   options.features.cli.fzf.enable = lib.mkEnableOption "fuzzy finder";
 
   config = lib.mkIf cfg.enable {

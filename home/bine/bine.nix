@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -11,7 +16,7 @@
   home.stateVersion = "25.11";
 
   programs.home-manager.enable = true;
-  
+
   # features enable/disable here
   features.cli = {
     zsh.enable = true;
@@ -109,7 +114,7 @@
       package = pkgs.papirus-icon-theme;
     };
   };
-  
+
   # GTK settings
   dconf.settings = {
     "org/gnome/desktop/interface" = {

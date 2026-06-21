@@ -4,9 +4,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.features.desktop.wayland;
-in {
+in
+{
   options.features.desktop.wayland.enable = mkEnableOption "wayland extra tools and config";
 
   config = mkIf cfg.enable {
@@ -81,7 +83,7 @@ in {
             color: @foreground;
             border-radius: 10px;
         }
-        
+
         #language,
         #custom-language,
         #custom-updates,
@@ -237,8 +239,12 @@ in {
           passthrough = false;
           gtk-layer-shell = true;
           height = 30;
-          modules-left = ["custom/weather" "hyprland/workspaces" "hyprland/window"];
-          modules-center = ["clock"];
+          modules-left = [
+            "custom/weather"
+            "hyprland/workspaces"
+            "hyprland/window"
+          ];
+          modules-center = [ "clock" ];
           modules-right = [
             "hyprland/language"
             "cpu"
@@ -280,11 +286,11 @@ in {
               "default" = "";
             };
             persistent-workspaces = {
-              "1" = [];
-              "2" = [];
-              "3" = [];
-              "4" = [];
-              "5" = [];
+              "1" = [ ];
+              "2" = [ ];
+              "3" = [ ];
+              "4" = [ ];
+              "5" = [ ];
             };
           };
 
@@ -341,7 +347,17 @@ in {
           backlight = {
             device = "amdgpu_bl1";
             format = "{icon} {percent}%";
-            format-icons = ["" "" "" "" "" "" "" "" ""];
+            format-icons = [
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+            ];
             on-scroll-up = "brightnessctl set 5%+";
             on-scroll-down = "brightnessctl set 5%-";
           };
@@ -391,7 +407,11 @@ in {
               phone = " ";
               portable = " ";
               car = " ";
-              default = [" " " " " "];
+              default = [
+                " "
+                " "
+                " "
+              ];
             };
             on-click = "pavucontrol";
             on-click-right = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
@@ -408,7 +428,18 @@ in {
             format-charging = "󰂄 {capacity}%";
             format-plugged = "󱘖 {capacity}%";
             format-alt = "{icon} {time}";
-            format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+            format-icons = [
+              "󰁺"
+              "󰁻"
+              "󰁼"
+              "󰁽"
+              "󰁾"
+              "󰁿"
+              "󰂀"
+              "󰂁"
+              "󰂂"
+              "󰁹"
+            ];
             tooltip-format = "{timeTo}\nCapacity: {capacity}%\nPower: {power}W";
           };
         };
@@ -442,35 +473,35 @@ in {
       slurp
       wf-recorder
       wl-mirror
-      
+
       # Clipboard
       wl-clipboard
       clipman
-      
+
       # Utilities
       wlogout
       waypipe
       wtype
       ydotool
-      
+
       # Notifications
       dunst
       libnotify
-      
+
       # Qt Wayland support
       qt6.qtwayland
       qt5.qtwayland
-      
+
       # Audio
       pavucontrol
-      
+
       # Network
       networkmanagerapplet
       networkmanager_dmenu
-      
+
       # File manager
       nautilus
-      
+
       # Brightness
       brightnessctl
     ];

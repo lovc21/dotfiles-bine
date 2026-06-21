@@ -1,8 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.features.llms.ollama;
-in {
+in
+{
   options.features.llms.ollama = {
     enable = lib.mkEnableOption "Ollama local LLM runner";
     package = lib.mkOption {
@@ -12,7 +18,7 @@ in {
     };
     models = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = [];
+      default = [ ];
       description = "Models pulled automatically after the ollama service starts.";
     };
   };
@@ -20,10 +26,10 @@ in {
   config = lib.mkIf cfg.enable {
     services.ollama = {
       enable = true;
-      package = cfg.package;
+      inherit (cfg) package;
     };
 
-    systemd.user.services.ollama-pull-models = lib.mkIf (cfg.models != []) {
+    systemd.user.services.ollama-pull-models = lib.mkIf (cfg.models != [ ]) {
       Unit = {
         Description = "Pull configured Ollama models";
         After = [ "ollama.service" ];

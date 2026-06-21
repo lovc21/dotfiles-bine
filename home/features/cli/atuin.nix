@@ -2,7 +2,8 @@
 
 let
   cfg = config.features.cli.atuin;
-in {
+in
+{
   options.features.cli.atuin.enable = lib.mkEnableOption "atuin shell history";
 
   config = lib.mkIf cfg.enable {
