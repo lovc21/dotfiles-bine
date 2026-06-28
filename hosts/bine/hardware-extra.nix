@@ -40,6 +40,11 @@
     HandleLidSwitchDocked = "suspend";
   };
 
+  # The PixArt I2C touchpad arms itself as a wakeup source and blocks suspend, Keyboard / power / lid still wake up
+  services.udev.extraRules = ''
+    ACTION=="add|change", SUBSYSTEM=="i2c", ATTR{name}=="PIXA3854:00", ATTR{power/wakeup}="disabled"
+  '';
+
   # Compressed swap-in-RAM. Cheap insurance against memory pressure under
   # docker / browser / nix builds; no disk swap needed.
   zramSwap = {
