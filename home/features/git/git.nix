@@ -75,6 +75,16 @@ in
           identitiesOnly = true;
           proxyCommand = "sh -c 'nc -w 3 -z github.com 22 >/dev/null 2>&1 && exec nc %h 22 || exec nc ssh.github.com 443'";
         };
+        "gitlab.com" = {
+          user = "git";
+          identityFile = "~/.ssh/id_ed25519_sk_rk";
+          identitiesOnly = true;
+        };
+        "git.int.sunesis.si" = {
+          user = "git";
+          identityFile = "~/.ssh/id_ed25519_sk_rk";
+          identitiesOnly = true;
+        };
       };
     };
   };

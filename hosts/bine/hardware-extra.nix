@@ -26,6 +26,13 @@
     pulse.enable = true;
   };
 
+  # Bring up the AMD ACP (SOF) digital microphone on the Ryzen AI 300.
+  # The internal mic lives on the ACP 7.0 coprocessor and needs the SOF
+  # driver + firmware; without these it never binds and PipeWire falls
+  # back to the dead ALC285 HDA pin (constant static).
+  hardware.firmware = [ pkgs.sof-firmware ];
+  boot.kernelModules = [ "snd_sof_amd_acp70" ];
+
   # Other Hardware
   services.libinput.enable = true; # Touchpad
   services.hardware.bolt.enable = true; # Thunderbolt

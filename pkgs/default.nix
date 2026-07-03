@@ -1,4 +1,8 @@
-_: {
+{
+  pkgs ? import <nixpkgs> { },
+  ...
+}:
+{
   # Define your custom packages here
-  #  my-package = pkgs.callPackage ./my-package {};
+  ai-usagebar = pkgs.callPackage ./ai-usagebar { };
 }

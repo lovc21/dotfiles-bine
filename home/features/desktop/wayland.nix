@@ -84,11 +84,12 @@ in
             border-radius: 10px;
         }
 
-        #language,
         #custom-language,
         #custom-updates,
         #custom-caffeine,
         #custom-weather,
+        #custom-aibar,
+        #custom-spotify,
         #window,
         #clock,
         #battery,
@@ -110,7 +111,7 @@ in
 
         #tray {
             border-radius: 10px;
-            margin-right: 10px;
+            margin-right: 15px;
         }
 
         #workspaces {
@@ -139,6 +140,13 @@ in
             color: @cyan;
             border-radius: 10px;
             margin-left: 10px;
+        }
+
+        #custom-aibar {
+            color: @purple;
+            border-radius: 10px;
+            margin-left: 10px;
+            margin-right: 5px;
         }
 
         #cpu {
@@ -216,11 +224,20 @@ in
             animation-direction: alternate;
         }
 
-        #language {
+        #custom-language {
             color: @pink;
             border-radius: 10px;
-            margin-left: 10px;
             margin-right: 5px;
+        }
+
+        #custom-spotify {
+            color: @green;
+            border-radius: 10px;
+            margin-left: 10px;
+        }
+
+        #custom-spotify.paused {
+            color: @comment;
         }
 
         @keyframes blink {
@@ -242,11 +259,14 @@ in
           modules-left = [
             "custom/weather"
             "hyprland/workspaces"
-            "hyprland/window"
+            "custom/spotify"
           ];
-          modules-center = [ "clock" ];
+          modules-center = [
+            "custom/language"
+            "clock"
+          ];
           modules-right = [
-            "hyprland/language"
+            "custom/aibar"
             "cpu"
             "memory"
             "temperature"
@@ -294,11 +314,34 @@ in
             };
           };
 
-          "hyprland/language" = {
-            format = " {}";
-            format-english = "US";
-            format-slovenian = "SI";
-            on-click = "hyprctl switchxkblayout all next";
+          "custom/spotify" = {
+            exec = "${pkgs.writeShellScript "waybar-spotify" ''
+              ${pkgs.playerctl}/bin/playerctl -p spotify --follow metadata \
+                --format '{"text":"  {{markup_escape(title)}} — {{markup_escape(artist)}}","tooltip":"{{markup_escape(title)}}\n{{markup_escape(artist)}}\n{{markup_escape(album)}}","class":"{{lc(status)}}"}' \
+                2>/dev/null
+            ''}";
+            return-type = "json";
+            restart-interval = 5;
+            max-length = 45;
+            on-click = "${pkgs.playerctl}/bin/playerctl -p spotify play-pause";
+            on-scroll-up = "${pkgs.playerctl}/bin/playerctl -p spotify next";
+            on-scroll-down = "${pkgs.playerctl}/bin/playerctl -p spotify previous";
+            on-click-right = "spotify";
+          };
+
+          "custom/language" = {
+            exec = "${pkgs.writeShellScript "waybar-language" ''
+              layout=$(${pkgs.hyprland}/bin/hyprctl -j devices \
+                | ${pkgs.jq}/bin/jq -r '.keyboards[] | select(.main==true) | .active_keymap')
+              case "$layout" in
+                *Sloven*) echo "SI" ;;
+                *English*) echo "EN" ;;
+                *) echo "''${layout:0:2}" ;;
+              esac
+            ''}";
+            interval = 60;
+            signal = 8;
+            on-click = "hyprctl switchxkblayout all next && pkill -RTMIN+8 waybar";
           };
 
           "custom/weather" = {
@@ -312,6 +355,16 @@ in
               curl -s "https://wttr.in/$CITY?format=%c+%C,+%t,+$CITY+$COUNTRY" | sed 's/+//'
             '';
             return-type = "";
+          };
+
+          "custom/aibar" = {
+            exec = "${pkgs.ai-usagebar}/bin/ai-usagebar --format '{vendor_short} {session_pct}%'";
+            return-type = "json";
+            interval = 300;
+            tooltip = true;
+            on-click = "ghostty -e ${pkgs.ai-usagebar}/bin/ai-usagebar-tui";
+            on-scroll-up = "${pkgs.ai-usagebar}/bin/ai-usagebar --cycle-next";
+            on-scroll-down = "${pkgs.ai-usagebar}/bin/ai-usagebar --cycle-prev";
           };
 
           cpu = {
@@ -363,7 +416,7 @@ in
           };
 
           tray = {
-            icon-size = 16;
+            icon-size = 14;
             spacing = 10;
           };
 
@@ -468,6 +521,9 @@ in
     };
 
     home.packages = with pkgs; [
+      # AI usage bar (waybar widget + TUI)
+      ai-usagebar
+
       # Screenshot & Recording
       grim
       slurp
