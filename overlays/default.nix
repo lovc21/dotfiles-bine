@@ -11,7 +11,7 @@
       version = "2.1.212";
       src = prev.fetchurl {
         url = "https://downloads.claude.ai/claude-code-releases/${version}/linux-x64/claude";
-        sha256 = "66d4fbe90922054d339b85d80a303c5d85936021be3210f2eba1fc0b24340742";
+        sha256 = "044a88cf3a5180776617fd3da1238dcbf9141ddec449a39cf7d2af1ac78e684e";
       };
     });
   };
