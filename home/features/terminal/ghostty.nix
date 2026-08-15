@@ -24,7 +24,7 @@ in
         "window-padding-y" = "10,10";
         "window-decoration" = true;
 
-        "scrollback-limit" = 1000000;
+        "scrollback-limit" = 100000000;
         "window-vsync" = true;
 
         "link-url" = true;

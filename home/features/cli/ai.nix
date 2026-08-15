@@ -20,7 +20,5 @@ in
       code2prompt
       inputs.llmfit.packages.${pkgs.system}.default
     ];
-
-    home.sessionVariables.ANTHROPIC_MODEL = "claude-opus-4-8";
   };
 }
