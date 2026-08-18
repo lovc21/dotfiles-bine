@@ -1,0 +1,76 @@
+{
+  "fan": {
+    "mode": "curve",
+    "manual": {
+      "duty_pct": 100
+    },
+    "curve": {
+      "sensors": [
+        "APU",
+        "F75303_CPU",
+        "F75303_DDR",
+        "F75303_Local"
+      ],
+      "points": [
+        [
+          1,
+          30
+        ],
+        [
+          56,
+          77
+        ],
+        [
+          82,
+          79
+        ],
+        [
+          89,
+          100
+        ]
+      ],
+      "poll_ms": 400,
+      "hysteresis_c": 1,
+      "rate_limit_pct_per_step": 1
+    }
+  },
+  "power": {
+    "ac": {
+      "epp_preference": {
+        "enabled": true,
+        "value": "performance"
+      },
+      "governor": {
+        "enabled": true,
+        "value": "performance"
+      },
+      "min_freq_mhz": {
+        "enabled": false,
+        "value": 1000
+      },
+      "max_freq_mhz": {
+        "enabled": false,
+        "value": 4000
+      }
+    },
+    "battery": null
+  },
+  "battery": {
+    "charge_limit_max_pct": {
+      "enabled": false,
+      "value": 100
+    },
+    "charge_rate_c": {
+      "enabled": false,
+      "value": 1.0
+    }
+  },
+  "updates": {
+    "auto_install": false
+  },
+  "telemetry": {
+    "poll_ms": 1000,
+    "retain_seconds": 1800
+  },
+  "ui": {}
+}

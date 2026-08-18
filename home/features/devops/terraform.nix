@@ -17,5 +17,13 @@ in
       terraform-ls
       tflint
     ];
+
+    home.file.".terraformrc".text = ''
+      plugin_cache_dir = "$HOME/.terraform.d/plugin-cache"
+    '';
+
+    # terraform refuses to create the cache dir itself; the .keep file
+    # makes home-manager create it
+    home.file.".terraform.d/plugin-cache/.keep".text = "";
   };
 }

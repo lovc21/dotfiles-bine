@@ -5,6 +5,12 @@
   services.fwupd.extraRemotes = [ "lvfs-testing" ];
   hardware.enableRedistributableFirmware = true;
 
+  # Framework Control (fan curves, power profiles, battery charge limit)
+  # Config is declarative: edit framework-control-config.json and rebuild,
+  # then restart the service. UI edits get reverted on the next rebuild.
+  services.framework-control.enable = true;
+  environment.etc."framework-control/config.json".source = ./framework-control-config.json;
+
   # Fingerprint Reader
   services.fprintd.enable = true;
   security.pam.services.gdm-fingerprint.fprintAuth = true;
