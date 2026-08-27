@@ -60,6 +60,7 @@
         "https://hyprland.cachix.org"
         "https://nixpkgs-unfree.cachix.org"
         "https://lovc21.cachix.org"
+        "https://herdr.cachix.org"
       ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -67,6 +68,7 @@
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
         "lovc21.cachix.org-1:RDw/B/PYK6/d7Vwr6Bu4il5w5XhPlCrflMvsTIgHQEI="
+        "herdr.cachix.org-1:3nH7IStRsS0ASfdonA0DCRR2ZrSCeWitZ7Kwew0cR4I="
       ];
     };
     # Configure automatic garbage collection for NixOS state;

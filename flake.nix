@@ -35,6 +35,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # herdr terminal multiplexer for AI agents (prebuilt binaries)
+    herdr-nix.url = "github:herdrdev/herdr-nix";
+
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";

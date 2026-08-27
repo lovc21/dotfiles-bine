@@ -40,6 +40,7 @@ in
       gping
       whois
       bitwise
+      visidata
     ];
   };
 }

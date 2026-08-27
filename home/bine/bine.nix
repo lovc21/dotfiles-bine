@@ -27,6 +27,11 @@
     fastfetch.enable = true;
     starship.enable = true;
     ai.enable = true;
+    ai.herdr.settings = {
+      # "terminal" reuses the ghostty palette, so herdr follows stylix
+      theme.name = "terminal";
+      theme.custom.accent = config.lib.stylix.colors.withHashtag.base0D;
+    };
     direnv.enable = true;
     atuin.enable = true;
     tools.enable = true;
@@ -100,7 +105,6 @@
   };
 
   features.research = {
-    zotero.enable = true;
     xournalpp.enable = true;
   };
 
