@@ -31,6 +31,7 @@
       # "terminal" reuses the ghostty palette, so herdr follows stylix
       theme.name = "terminal";
       theme.custom.accent = config.lib.stylix.colors.withHashtag.base0D;
+      ui.sound.enabled = false;
     };
     direnv.enable = true;
     atuin.enable = true;
