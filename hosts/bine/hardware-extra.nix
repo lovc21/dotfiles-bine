@@ -15,7 +15,7 @@
   services.fprintd.enable = true;
   security.pam.services.gdm-fingerprint.fprintAuth = true;
   security.pam.services.sudo.fprintAuth = true;
-  security.pam.services.gnome-screensaver.fprintAuth = true;
+  security.pam.services.hyprlock.fprintAuth = true;
 
   # Bluetooth
   hardware.bluetooth.enable = true;

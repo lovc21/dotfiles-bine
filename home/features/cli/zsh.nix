@@ -46,8 +46,10 @@ in
         lzd = "lazydocker";
         lzg = "lazygit";
 
+        cat = "bat";
+
         # System management
-        update = "sudo nixos-rebuild switch";
+        update = "nh os switch /home/bine/jakob-stuff/dotfiles-bine";
       };
 
       # History configuration
@@ -61,7 +63,6 @@ in
       # Environment variables from .zshrc
       sessionVariables = {
         # Go configuration
-        GOROOT = "/usr/local/go";
         GOPATH = "$HOME/go";
 
         # GKE auth plugin
@@ -74,7 +75,6 @@ in
       # Changed from initExtra to initContent
       initContent = ''
         # FZF configuration
-        [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
         if command -v fzf >/dev/null 2>&1; then
           source <(fzf --zsh)
         fi
@@ -87,30 +87,23 @@ in
         # Rust environment
         [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
-        # ASDF version manager
-        [ -f "$HOME/.asdf/asdf.sh" ] && source "$HOME/.asdf/asdf.sh"
-
-        # NVM (Node Version Manager)
-        export NVM_DIR="$HOME/.nvm"
-        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
         # Pay Respects (better thefuck)
         if command -v pay-respects >/dev/null 2>&1; then
           eval "$(pay-respects zsh --alias)"
         fi
 
+        # Yazi: y quits into the last browsed directory (q keeps it, Q discards)
+        function y() {
+          local tmp cwd; tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+          command yazi "$@" --cwd-file="$tmp"
+          IFS= read -r -d ''' cwd < "$tmp"
+          [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd" || builtin true
+          command rm -f -- "$tmp"
+        }
+
         # Additional PATH additions
         export PATH="$HOME/.local/bin:$PATH"
-        export PATH="$HOME/.tfenv/bin:$PATH"
-        export PATH="$GOROOT/bin:$PATH"
         export PATH="$GOPATH/bin:$PATH"
-
-        # Ghostty path (from dotfiles)
-        export PATH="$PATH:/home/jakob/Downloads/ghostty-1.0.0/zig-out/bin"
-
-        # Neovim path (from dotfiles)
-        export PATH="$PATH:~/Downloads/nvim-linux64/bin"
 
         tf() {
           local version=""

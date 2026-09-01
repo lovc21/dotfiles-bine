@@ -18,7 +18,10 @@ in
       ];
 
       defaultCommand = "fd --type f --exclude .git --follow --hidden";
-      changeDirWidgetCommand = "fd --type d --exclude .git --follow --hidden";
+      changeDirWidget.command = "fd --type d --exclude .git --follow --hidden";
+
+      # atuin owns ctrl-r; disable fzf's competing history binding
+      historyWidget.command = "";
     };
   };
 }

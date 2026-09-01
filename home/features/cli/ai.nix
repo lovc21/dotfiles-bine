@@ -23,12 +23,12 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      gemini-cli
+      antigravity-cli
       claude-code
       opencode
       code2prompt
-      inputs.llmfit.packages.${pkgs.system}.default
-      inputs.herdr-nix.packages.${pkgs.system}.default
+      inputs.llmfit.packages.${pkgs.stdenv.hostPlatform.system}.default
+      inputs.herdr-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
     xdg.configFile."herdr/config.toml" = lib.mkIf (cfg.herdr.settings != { }) {

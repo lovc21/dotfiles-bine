@@ -16,6 +16,7 @@ in
       enable = true;
       package = null;
       portalPackage = null;
+      configType = "hyprlang";
       settings = {
         xwayland = {
           force_zero_scaling = true;

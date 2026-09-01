@@ -3,6 +3,17 @@
     Jakob's NixOS configuration
   '';
 
+  nixConfig = {
+    extra-substituters = [
+      "https://herdr.cachix.org"
+      "https://yazi.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "herdr.cachix.org-1:3nH7IStRsS0ASfdonA0DCRR2ZrSCeWitZ7Kwew0cR4I="
+      "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
+    ];
+  };
+
   inputs = {
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -37,6 +48,9 @@
 
     # herdr terminal multiplexer for AI agents (prebuilt binaries)
     herdr-nix.url = "github:herdrdev/herdr-nix";
+
+    # yazi file manager from upstream (prebuilt via yazi cachix)
+    yazi.url = "github:sxyazi/yazi";
 
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
