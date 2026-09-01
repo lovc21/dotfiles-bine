@@ -11,6 +11,7 @@
     ./direnv.nix
     ./atuin.nix
     ./tools.nix
+    ./yazi.nix
   ];
 
   home.packages = with pkgs; [

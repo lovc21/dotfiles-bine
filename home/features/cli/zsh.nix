@@ -92,15 +92,6 @@ in
           eval "$(pay-respects zsh --alias)"
         fi
 
-        # Yazi: y quits into the last browsed directory (q keeps it, Q discards)
-        function y() {
-          local tmp cwd; tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-          command yazi "$@" --cwd-file="$tmp"
-          IFS= read -r -d ''' cwd < "$tmp"
-          [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd" || builtin true
-          command rm -f -- "$tmp"
-        }
-
         # Additional PATH additions
         export PATH="$HOME/.local/bin:$PATH"
         export PATH="$GOPATH/bin:$PATH"

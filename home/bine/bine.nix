@@ -36,6 +36,7 @@
     direnv.enable = true;
     atuin.enable = true;
     tools.enable = true;
+    yazi.enable = true;
   };
 
   features.git.enable = true;

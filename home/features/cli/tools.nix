@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }:
 
@@ -33,7 +32,6 @@ in
       just
       rsync
       rclone
-      inputs.yazi.packages.${pkgs.stdenv.hostPlatform.system}.default
       ranger
       mpv
       radeontop
