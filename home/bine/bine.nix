@@ -132,5 +132,11 @@
   home.packages = with pkgs; [
     gnome-tweaks
     dconf-editor
+    (pkgs.symlinkJoin {
+      name = "librepods";
+      paths = [ pkgs.librepods ];
+      nativeBuildInputs = [ pkgs.makeWrapper ];
+      postBuild = "wrapProgram $out/bin/librepods --unset QT_STYLE_OVERRIDE";
+    })
   ];
 }

@@ -21,6 +21,9 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
+  # Apple vendor DeviceID so AirPods expose battery/noise-control to librepods;
+  # AirPods cache this, so re-pair them after the first rebuild.
+  hardware.bluetooth.settings.General.DeviceID = "bluetooth:004C:0000:0000";
 
   # Audio (Pipewire)
   services.pulseaudio.enable = false;
@@ -30,6 +33,10 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    # Dummy AVRCP player so AirPods media controls (play/pause/skip) work
+    wireplumber.extraConfig."51-bluez-avrcp" = {
+      "monitor.bluez.properties"."bluez5.dummy-avrcp-player" = true;
+    };
   };
 
   # Bring up the AMD ACP (SOF) digital microphone on the Ryzen AI 300.
