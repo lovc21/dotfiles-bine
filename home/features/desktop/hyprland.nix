@@ -56,7 +56,7 @@ in
           kb_variant = "";
           kb_model = "";
           kb_rules = "";
-          kb_options = "ctrl:nocaps,grp:alt_shift_toggle";
+          kb_options = "grp:alt_shift_toggle"; # Caps Lock -> herdr leader
           follow_mouse = 1;
 
           touchpad = {

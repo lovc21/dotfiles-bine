@@ -52,6 +52,9 @@
     # yazi file manager from upstream (prebuilt via yazi cachix)
     yazi.url = "github:sxyazi/yazi";
 
+    # sofka kubernetes TUI (built from source; no binary cache upstream)
+    sofka.url = "github:nklmilojevic/sofka/764c1794909372e0b727ad2972d2a9e529e9e946";
+
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";

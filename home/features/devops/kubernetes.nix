@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
@@ -18,6 +19,7 @@ in
       k9s
       kubernetes-helm
       argocd
+      inputs.sofka.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
 }

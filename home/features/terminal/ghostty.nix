@@ -34,10 +34,6 @@ in
 
         keybind = [
           "ctrl+shift+x=close_surface"
-          "ctrl+shift+j=goto_split:bottom"
-          "ctrl+shift+k=goto_split:top"
-          "ctrl+shift+h=goto_split:left"
-          "ctrl+shift+l=goto_split:right"
         ];
       };
     };

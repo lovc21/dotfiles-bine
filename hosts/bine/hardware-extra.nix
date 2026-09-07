@@ -46,6 +46,23 @@
   hardware.firmware = [ pkgs.sof-firmware ];
   boot.kernelModules = [ "snd_sof_amd_acp70" ];
 
+  # Caps Lock -> herdr leader (keyd, evdev-level, works on Wayland).
+  services.keyd = {
+    enable = true;
+    keyboards.default = {
+      ids = [ "*" ];
+      settings = {
+        main.capslock = "overload(caps, C-b)";
+        "caps:C" = {
+          h = "macro(C-b h)";
+          j = "macro(C-b j)";
+          k = "macro(C-b k)";
+          l = "macro(C-b l)";
+        };
+      };
+    };
+  };
+
   # Other Hardware
   services.libinput.enable = true; # Touchpad
   services.hardware.bolt.enable = true; # Thunderbolt
