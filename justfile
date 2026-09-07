@@ -38,6 +38,22 @@ deploy:
 update:
     nix flake update
 
+# Pin claude-code to the latest official release (rewrites pkgs/claude-code)
+[group('nix')]
+update-claude:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    v=$(curl -fsSL https://downloads.claude.ai/claude-code-releases/latest)
+    sum=$(curl -fsSL "https://downloads.claude.ai/claude-code-releases/$v/manifest.json" \
+        | jq -r '.platforms["linux-x64"].checksum')
+    hash=$(nix hash convert --hash-algo sha256 --to sri "$sum")
+    f=pkgs/claude-code/default.nix
+    sed -i "s|version = \"[^\"]*\"|version = \"$v\"|" "$f"
+    sed -i "s|hash = \"[^\"]*\"|hash = \"$hash\"|" "$f"
+    echo "claude-code -> $v"
+    echo "  $hash"
+    echo "run 'just deploy' to build it"
+
 # Clean old generations (older than 7 days)
 [group('nix')]
 clean:

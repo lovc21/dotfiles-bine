@@ -5,15 +5,8 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   # https://nixos.wiki/wiki/Overlays
-  modifications = _final: prev: {
-    # TODO: remove once nixpkgs catches up; pins ahead of nixpkgs for newest models.
-    claude-code = prev.claude-code.overrideAttrs (_: rec {
-      version = "2.1.212";
-      src = prev.fetchurl {
-        url = "https://downloads.claude.ai/claude-code-releases/${version}/linux-x64/claude";
-        sha256 = "044a88cf3a5180776617fd3da1238dcbf9141ddec449a39cf7d2af1ac78e684e";
-      };
-    });
+  modifications = _final: _prev: {
+    # (custom package overrides go here; none currently)
   };
 
   stable-packages = final: _prev: {

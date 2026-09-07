@@ -24,7 +24,7 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       antigravity-cli
-      claude-code
+      inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.claude-code
       opencode
       code2prompt
       inputs.llmfit.packages.${pkgs.stdenv.hostPlatform.system}.default
