@@ -13,5 +13,6 @@
     ./music
     ./research
     ./chess
+    ./3d-printing
   ];
 }

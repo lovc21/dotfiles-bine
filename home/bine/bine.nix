@@ -112,6 +112,8 @@
 
   features.chess.enable = true;
 
+  features."3d-printing".bambu.enable = true;
+
   # GTK theme and icon theme
   gtk = {
     enable = true;
