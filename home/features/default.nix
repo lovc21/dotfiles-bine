@@ -14,5 +14,6 @@
     ./research
     ./chess
     ./3d-printing
+    ./torrent-client
   ];
 }

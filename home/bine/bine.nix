@@ -114,6 +114,8 @@
 
   features."3d-printing".bambu.enable = true;
 
+  features.torrent-client.transmission.enable = true;
+
   # GTK theme and icon theme
   gtk = {
     enable = true;
