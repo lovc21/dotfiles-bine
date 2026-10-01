@@ -44,7 +44,7 @@ update-claude:
     #!/usr/bin/env bash
     set -euo pipefail
     v=$(curl -fsSL https://downloads.claude.ai/claude-code-releases/latest)
-    sum=$(curl -fsSL "https://downloads.claude.ai/claude-code-releases/$v/manifest.json" \
+    sum=$(curl -fsSL "https://downloads.claude.ai/claude-code-releases/$v/manifest.zst.json" \
         | jq -r '.platforms["linux-x64"].checksum')
     hash=$(nix hash convert --hash-algo sha256 --to sri "$sum")
     f=pkgs/claude-code/default.nix

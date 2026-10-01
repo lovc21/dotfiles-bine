@@ -5,9 +5,9 @@
 }:
 
 claude-code.overrideAttrs (_: rec {
-  version = "2.1.263";
+  version = "2.1.286";
   src = fetchurl {
-    url = "https://downloads.claude.ai/claude-code-releases/${version}/linux-x64/claude";
-    hash = "sha256-JtAgNR6BEvQAZ5Dzz85DtMnfDBux0OVCNk1kFRuB1bo=";
+    url = "https://downloads.claude.ai/claude-code-releases/${version}/linux-x64/claude.zst";
+    hash = "sha256-oU2ARDRzEm5Ay8UOt4iZ9D6PTUM2CVhj+Aiaa5ygKpc=";
   };
 })
