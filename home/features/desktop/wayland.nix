@@ -14,6 +14,7 @@ in
   config = mkIf cfg.enable {
     programs.waybar = {
       enable = true;
+      systemd.enable = true;
       style = ''
         @define-color background #1a1b26;
         @define-color background-alt #24283b;
@@ -583,6 +584,21 @@ in
     xdg.configFile."networkmanager-dmenu/config.ini".text = ''
       [dmenu]
       dmenu_command = wofi --dmenu --prompt "Wi-Fi"
+    '';
+
+    # Only use Claude for AI tracking (more sooon)
+    xdg.configFile."ai-usagebar/config.toml".text = ''
+      [anthropic]
+      enabled = true
+
+      [openai]
+      enabled = false
+
+      [zai]
+      enabled = false
+
+      [openrouter]
+      enabled = false
     '';
   };
 }

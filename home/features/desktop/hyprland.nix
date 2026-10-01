@@ -23,7 +23,6 @@ in
         };
 
         exec-once = [
-          "waybar"
           "hyprpaper"
           "hypridle"
           "nm-applet --indicator"
