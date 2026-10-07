@@ -41,10 +41,27 @@
 
   features.git.enable = true;
 
-  features.llms.ollama = {
+  features.llms.llama-cpp = {
     enable = true;
-    models = [
-      "qwen3-coder:30b"
+    hfRepo = "HauhauCS/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive";
+    hfFile = "Qwen3.5-9B-Uncensored-HauhauCS-Aggressive-Q4_K_M.gguf";
+    alias = "qwen3.5-9b-uncensored";
+    extraArgs = [
+      "--fit-target"
+      "8192"
+      "--no-mmproj"
+      "--cache-type-k"
+      "q8_0"
+      "--cache-type-v"
+      "q8_0"
+      "--temp"
+      "0.6"
+      "--top-p"
+      "0.95"
+      "--top-k"
+      "20"
+      "--min-p"
+      "0"
     ];
   };
 

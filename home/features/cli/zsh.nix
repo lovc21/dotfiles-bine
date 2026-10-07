@@ -119,8 +119,14 @@ in
           fi
           
           if [[ -n "$version" ]]; then
-            echo "󱁢 Terraform ''$version" >&2
-            nix shell github:stackbuilders/nixpkgs-terraform#"\"terraform-''${version}\"" -c terraform "$@"
+            local tf_root="$HOME/.local/state/terraform-versions/''${version}"
+            if [[ ! -e "$tf_root" ]]; then
+              mkdir -p "$(dirname "$tf_root")"
+              echo "󱁢 Building Terraform ''$version once (kept as a GC root)" >&2
+              nix build --out-link "$tf_root" \
+                github:stackbuilders/nixpkgs-terraform#"\"terraform-''${version}\"" || return 1
+            fi
+            "$tf_root/bin/terraform" "$@"
           else
             command terraform "$@"
           fi

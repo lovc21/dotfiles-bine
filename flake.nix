@@ -7,10 +7,12 @@
     extra-substituters = [
       "https://herdr.cachix.org"
       "https://yazi.cachix.org"
+      "https://nixpkgs-terraform.cachix.org"
     ];
     extra-trusted-public-keys = [
       "herdr.cachix.org-1:3nH7IStRsS0ASfdonA0DCRR2ZrSCeWitZ7Kwew0cR4I="
       "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
+      "nixpkgs-terraform.cachix.org-1:8Sit092rIdAVENA3ZVeH9hzSiqI/jng6JiCrQ1Dmusw="
     ];
   };
 
