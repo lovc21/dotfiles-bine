@@ -104,6 +104,7 @@
     terraform.enable = true;
     kubernetes.enable = true;
     docker.enable = true;
+    devcontainers.enable = true;
     cloud.enable = true;
     hashicorp.enable = true;
     security.enable = true;
@@ -153,6 +154,7 @@
   home.packages = with pkgs; [
     gnome-tweaks
     dconf-editor
+    libreoffice-fresh
     (pkgs.symlinkJoin {
       name = "librepods";
       paths = [ pkgs.librepods ];
