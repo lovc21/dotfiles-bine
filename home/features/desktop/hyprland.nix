@@ -222,6 +222,7 @@ in
           "match:class (spotify), workspace 5"
           "match:class (firefox), opacity 1.0"
           "match:class (brave-browser), opacity 1.0"
+          "match:class ^(libreoffice.*|soffice)$, opacity 1.0"
           "match:class ^(steam)$, match:title ^()$, stay_focused on"
           "match:class ^(steam)$, match:title ^()$, min_size 1 1"
           "match:class ^(steam)$, tile on"

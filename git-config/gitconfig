@@ -28,3 +28,8 @@
 [credential "https://gitlab.com"]
 	helper = 
 	helper = !/nix/store/k6cvfxidpfl59xw86lggm1s6gsy1jk3m-glab-1.74.0/bin/.glab-wrapped auth git-credential
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

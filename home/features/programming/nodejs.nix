@@ -18,5 +18,10 @@ in
       typescript-language-server
       pnpm
     ];
+
+    home.sessionVariables = {
+      npm_config_ignore_scripts = "true";
+      pnpm_config_minimum_release_age = "10080";
+    };
   };
 }

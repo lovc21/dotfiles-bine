@@ -12,7 +12,6 @@
       "wheel"
       "networkmanager"
       "video"
-      "docker"
     ];
     shell = pkgs.zsh;
     packages = [

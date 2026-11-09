@@ -154,7 +154,16 @@
   home.packages = with pkgs; [
     gnome-tweaks
     dconf-editor
-    libreoffice-fresh
+    (pkgs.symlinkJoin {
+      name = "libreoffice";
+      paths = [ pkgs.libreoffice ];
+      nativeBuildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+        for f in $out/bin/*; do
+          wrapProgram "$f" --set SAL_USE_VCLPLUGIN gtk3 --set GTK_THEME adw-gtk3-dark --unset QT_STYLE_OVERRIDE
+        done
+      '';
+    })
     (pkgs.symlinkJoin {
       name = "librepods";
       paths = [ pkgs.librepods ];

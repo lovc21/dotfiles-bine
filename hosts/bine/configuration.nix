@@ -3,7 +3,6 @@
 {
 
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./steam.nix
     ./boot.nix
@@ -21,6 +20,9 @@
   # or, otherwise, the user that is logged in
   services.devmon.enable = true;
   services.gvfs.enable = true;
+
+  # Lan options in stema
+  features.steam.openLanPorts = false;
 
   networking.hostName = "bine"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -101,7 +103,11 @@
   programs.zsh.enable = true;
 
   # === SERVICES ===
-  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
+  virtualisation.podman.enable = true;
 
   system.stateVersion = "25.11";
 
