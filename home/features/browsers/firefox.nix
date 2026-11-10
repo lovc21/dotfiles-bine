@@ -41,6 +41,13 @@ in
             "browser.newtabpage.activity-stream.showSponsored" = pref false;
             "browser.newtabpage.activity-stream.showSponsoredTopSites" = pref false;
           };
+          "3rdparty".Extensions."{c2c003ee-bd69-42a2-b0e9-6f34222cb046}" = {
+            period = 600;
+            number = 4;
+            memory-enabled = true;
+            memory-value = 400;
+            startup-unpinned = true;
+          };
           ExtensionSettings = {
             "uBlock0@raymondhill.net" = extension "ublock-origin";
             "@testpilot-containers" = extension "multi-account-containers";
