@@ -45,7 +45,7 @@ in
           "DP-1, 3840x2160@60, 1440x0, 1"
 
           # Dell 1080p - rotated left (portrait), to the right of 4K
-          "DP-2, 1920x1080@60, 5280x0, 1, transform, 3"
+          "DP-2, 1920x1080@100, 5280x0, 1, transform, 3"
 
           ", preferred, auto, 1"
         ];

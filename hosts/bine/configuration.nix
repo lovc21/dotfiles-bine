@@ -50,6 +50,16 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  hardware.printers = {
+    ensurePrinters = [
+      {
+        name = "HP-OfficeJet-8710";
+        deviceUri = "ipp://192.168.0.222/ipp/print";
+        model = "everywhere";
+      }
+    ];
+    ensureDefaultPrinter = "HP-OfficeJet-8710";
+  };
 
   # GPG agent with SSH (if it's a GPG key on YubiKey)
   programs.gnupg.agent = {
