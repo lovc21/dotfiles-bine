@@ -40,6 +40,7 @@ in
       whois
       bitwise
       visidata
+      libsecret
     ];
   };
 }

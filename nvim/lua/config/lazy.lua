@@ -200,6 +200,20 @@ require("lazy").setup({
             },
           },
           terraformls = {},
+          vtsls = {
+            settings = {
+              typescript = {
+                preferences = {
+                  includePackageJsonAutoImports = "off",
+                },
+              },
+              javascript = {
+                preferences = {
+                  includePackageJsonAutoImports = "off",
+                },
+              },
+            },
+          },
         },
       },
     },
