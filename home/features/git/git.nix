@@ -85,6 +85,12 @@ in
           identityFile = "~/.ssh/id_ed25519_sk_rk";
           identitiesOnly = true;
         };
+        "merlin 192.168.0.3 merlin.jackcloud.internal" = {
+          hostname = "192.168.0.3";
+          user = "root";
+          identityFile = "~/.ssh/id_ed25519_sk_rk";
+          identitiesOnly = true;
+        };
       };
     };
   };

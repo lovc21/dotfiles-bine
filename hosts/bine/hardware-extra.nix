@@ -96,6 +96,8 @@
     "vm.page-cluster" = 0;
     "vm.watermark_boost_factor" = 0;
     "vm.watermark_scale_factor" = 125;
+    "vm.dirty_bytes" = 268435456;
+    "vm.dirty_background_bytes" = 67108864;
   };
 
   systemd.oomd.enableUserSlices = true;

@@ -76,6 +76,12 @@
   # have C, C++, or Rust extensions
   programs.nix-ld.enable = true;
 
+  # Build arm images
+  boot.binfmt = {
+    emulatedSystems = [ "aarch64-linux" ];
+    preferStaticEmulators = true;
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [

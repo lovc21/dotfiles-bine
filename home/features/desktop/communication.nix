@@ -19,7 +19,7 @@ in
           wrapProgram $out/bin/slack --add-flags "--disable-gpu"
         '';
       }))
-      (discord.override { commandLineArgs = "--disable-gpu"; })
+      discord
     ];
   };
 }
