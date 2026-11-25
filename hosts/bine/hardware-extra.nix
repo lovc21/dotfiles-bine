@@ -83,16 +83,22 @@
     ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="27c6", ATTR{idProduct}=="609c", ATTR{power/control}="on"
   '';
 
-  # Compressed swap-in-RAM. Cheap insurance against memory pressure under
-  # docker / browser / nix builds; no disk swap needed.
-  zramSwap = {
-    enable = true;
-    algorithm = "zstd";
-    memoryPercent = 50;
-  };
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 32 * 1024;
+    }
+  ];
+
+  boot.kernelParams = [
+    "zswap.enabled=1"
+    "zswap.compressor=zstd"
+    "zswap.max_pool_percent=25"
+    "zswap.shrinker_enabled=1"
+  ];
 
   boot.kernel.sysctl = {
-    "vm.swappiness" = 180;
+    "vm.swappiness" = 100;
     "vm.page-cluster" = 0;
     "vm.watermark_boost_factor" = 0;
     "vm.watermark_scale_factor" = 125;

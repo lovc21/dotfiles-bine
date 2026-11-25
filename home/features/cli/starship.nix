@@ -46,7 +46,13 @@ in
         ];
 
         # Time on the right side
-        right_format = "$time";
+        right_format = "\${env_var.CLAUDE_ACCOUNT}$time";
+
+        env_var.CLAUDE_ACCOUNT = {
+          symbol = "●";
+          style = "bg:#1d2230";
+          format = "[[ $symbol $env_value ](fg:#bb9af7 bg:#1d2230)]($style)";
+        };
 
         directory = {
           style = "fg:#e3e5e5 bg:#769ff0";
