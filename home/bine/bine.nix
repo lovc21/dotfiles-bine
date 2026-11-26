@@ -28,10 +28,27 @@
     starship.enable = true;
     ai.enable = true;
     ai.herdr.settings = {
+      onboarding = false;
       # "terminal" reuses the ghostty palette, so herdr follows stylix
       theme.name = "terminal";
       theme.custom.accent = config.lib.stylix.colors.withHashtag.base0D;
       ui.sound.enabled = false;
+      ui.toast.delivery = "system";
+      update.version_check = false;
+      experimental.pane_history = true;
+      keys = {
+        previous_agent = "prefix+shift+a";
+        next_agent = "prefix+a";
+        command = [
+          {
+            key = "prefix+shift+l";
+            type = "popup";
+            command = "lazygit";
+            width = "80%";
+            height = "80%";
+          }
+        ];
+      };
     };
     direnv.enable = true;
     atuin.enable = true;
